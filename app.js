@@ -63,7 +63,7 @@ const STATIC_RESOURCES = [
   {id:"r006",title:"FR6 Paramètres commerciaux",matiere:"com",type:"fiches",comp:"C1.1",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1sVWJbO0FFAEU3X6EL8d38jdT_ZFVzfYH/preview"},
   {id:"r007",title:"FR7 Cadre juridique de la vente B2B",matiere:"com",type:"fiches",comp:"C1.1",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1V_Kfs7fBN1SmBbqJ56hPk4O2BcDaxMDo/preview"},
   {id:"r008",title:"FR8 Stratégie de Négociation Technico-commerciale",matiere:"com",type:"fiches",comp:"C1.1",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/14Jtlua-eFGwTZYOAgkY6O1afyTJqwEYY/preview"},
-  {id:"r009",title:"FR1 La vente-conseil en BtoB",matiere:"com",type:"fiches",comp:"C1.2",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/18f3tnyyjkF9kJGeG87dWY0E1uB_WGHyO/preview"},
+  {id:"r009",title:"FR1 La vente-conseil en BtoB",matiere:"com",type:"fiches",comp:"C1.2",date:"14 mars 2026",driveUrl:"/FR1_C1.2_vente-conseil-BtoB_premium.html",localHtml:true},
   {id:"r010",title:"FR2 Construire et présenter une solution",matiere:"com",type:"fiches",comp:"C1.2",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1HGbs1B3Z8FcEVLfxt3mfVEcg0IdB2yiS/preview"},
   {id:"r011",title:"FR3 Analyser et positionner son offre",matiere:"com",type:"fiches",comp:"C1.2",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1XdN9A5G7c0_CtU4NZmLam6C0yfbdgGKb/preview"},
   {id:"r012",title:"FR4 Répondre à un CDC ou appel d\'offres",matiere:"com",type:"fiches",comp:"C1.2",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1J9HF1nSLRcpvIw8nsHuII2c9WeBi2tSi/preview"},
@@ -429,7 +429,7 @@ function updateCounts() {
 }
 
 /* ─── PDF ─── */
-function openPdf(id){const r=resources.find(x=>x.id===id);if(!r?.driveUrl)return;document.getElementById('pdfTitle').textContent=r.title;document.getElementById('pdfFrame').src=r.driveUrl;document.getElementById('pdfOverlay').classList.add('open')}
+function openPdf(id){const r=resources.find(x=>x.id===id);if(!r?.driveUrl)return;if(r.localHtml){window.open(r.driveUrl,'_blank');return;}document.getElementById('pdfTitle').textContent=r.title;document.getElementById('pdfFrame').src=r.driveUrl;document.getElementById('pdfOverlay').classList.add('open')}
 function closePdf(){document.getElementById('pdfOverlay').classList.remove('open');document.getElementById('pdfFrame').src=''}
 function dlPdf(id){const r=resources.find(x=>x.id===id);if(!r?.driveUrl)return;const a=document.createElement('a');a.href=getDriveDownloadUrl(r.driveUrl);a.target='_blank';a.click()}
 function delDoc(id){
