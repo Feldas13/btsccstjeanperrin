@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FR2 C1.1 — Communication interpersonnelle en négociation TC</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0A0F1E;--ink2:#1C2340;--ink3:#3A4263;
+  --coral:#E8573A;--coral2:#F07557;
+  --amber:#F5A623;--amber2:#FDE68A;
+  --teal:#0D9E8E;--teal2:#14B8A6;
+  --violet:#6B4FBB;
+  --fog:#F2F3F7;--fog2:#E8EAF2;--fog3:#D8DBE8;
+  --green:#16A34A;--green2:#DCFCE7;
+  --red:#DC2626;--red2:#FEE2E2;
+  --white:#FFFFFF;--r:12px;
+}
+body{font-family:'DM Sans',sans-serif;font-size:10.5pt;line-height:1.65;color:var(--ink);background:#fff;max-width:210mm;margin:0 auto;}
+
+/* ── COVER ── */
+.cover{background:var(--ink2);min-height:190px;padding:50px 56px 42px;position:relative;overflow:hidden;}
+.cover-dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);background-size:24px 24px;}
+.cover-glow{position:absolute;top:-100px;right:-60px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(245,166,35,.18) 0%,transparent 65%);}
+.cover-glow2{position:absolute;bottom:-60px;left:10%;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(13,158,142,.12) 0%,transparent 70%);}
+.cover-eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'DM Mono',monospace;font-size:8.5pt;letter-spacing:.12em;color:rgba(255,255,255,.4);text-transform:uppercase;margin-bottom:22px;position:relative;z-index:1;}
+.cover-eyebrow::before{content:'';display:inline-block;width:20px;height:2px;background:var(--amber);border-radius:2px;}
+.cover h1{font-family:'Syne',sans-serif;font-size:28pt;font-weight:800;line-height:1.1;color:#fff;max-width:500px;margin-bottom:12px;position:relative;z-index:1;}
+.cover h1 em{font-style:normal;color:var(--amber);}
+.cover-sub{font-size:10.5pt;color:rgba(255,255,255,.45);font-weight:300;margin-bottom:32px;position:relative;z-index:1;}
+.cover-pills{display:flex;flex-wrap:wrap;gap:8px;position:relative;z-index:1;}
+.pill{font-family:'DM Mono',monospace;font-size:8pt;font-weight:500;padding:5px 12px;border-radius:100px;letter-spacing:.06em;}
+.pill-amber{background:rgba(245,166,35,.2);color:var(--amber);border:1px solid rgba(245,166,35,.35);}
+.pill-teal{background:rgba(13,158,142,.2);color:var(--teal2);border:1px solid rgba(13,158,142,.3);}
+.pill-dim{background:rgba(255,255,255,.07);color:rgba(255,255,255,.4);border:1px solid rgba(255,255,255,.1);}
+
+/* ── INTRO ── */
+.intro{background:#FFFBF0;border-left:3px solid var(--amber);padding:20px 56px;}
+.intro p{font-size:10.5pt;color:var(--ink2);line-height:1.75;font-style:italic;}
+
+/* ── BODY ── */
+.body{padding:0 56px;}
+.section{margin:48px 0 0;}
+.s-label{font-family:'DM Mono',monospace;font-size:8pt;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:8px;}
+.s-title{font-family:'Syne',sans-serif;font-size:15pt;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:22px;padding-bottom:11px;border-bottom:1.5px solid var(--fog2);}
+
+/* ── MEHRABIAN VISUEL ── */
+.mehrabian{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:24px 0;}
+.meh-card{border-radius:var(--r);overflow:hidden;border:1.5px solid var(--fog2);}
+.meh-top{padding:22px 20px 16px;text-align:center;}
+.meh-pct{font-family:'Syne',sans-serif;font-size:42pt;font-weight:800;line-height:1;}
+.meh-dim{font-family:'Syne',sans-serif;font-size:11pt;font-weight:700;margin-top:4px;}
+.meh-sub{font-size:8.5pt;opacity:.6;margin-top:3px;}
+.meh-body{padding:14px 18px;border-top:1.5px solid var(--fog2);font-size:9pt;color:var(--ink3);line-height:1.6;}
+.meh-row{display:flex;gap:8px;margin-bottom:6px;align-items:flex-start;}
+.meh-row:last-child{margin-bottom:0;}
+.meh-row-key{font-weight:600;color:var(--ink);min-width:72px;flex-shrink:0;}
+.meh-bar{height:6px;border-radius:100px;margin:16px 18px;}
+.m-verbal .meh-top{background:#EEF4FF;}
+.m-verbal .meh-pct{color:#2B5BE8;}
+.m-verbal .meh-dim{color:#2B5BE8;}
+.m-verbal .meh-bar{background:#2B5BE8;}
+.m-para .meh-top{background:#FFF8E8;}
+.m-para .meh-pct{color:var(--amber);}
+.m-para .meh-dim{color:var(--amber);}
+.m-para .meh-bar{background:var(--amber);}
+.m-nonverbal .meh-top{background:#EEFAF7;}
+.m-nonverbal .meh-pct{color:var(--teal);}
+.m-nonverbal .meh-dim{color:var(--teal);}
+.m-nonverbal .meh-bar{background:var(--teal);}
+.meh-warn{background:var(--ink);border-radius:8px;padding:12px 18px;font-size:9.5pt;color:rgba(255,255,255,.8);text-align:center;margin-bottom:8px;}
+.meh-warn strong{color:var(--amber);}
+
+/* ── TABLE VOIX ── */
+.tbl{width:100%;border-collapse:separate;border-spacing:0;border-radius:var(--r);overflow:hidden;border:1.5px solid var(--fog2);margin:20px 0;font-size:9.5pt;}
+.tbl thead th{padding:11px 16px;font-family:'Syne',sans-serif;font-size:8.5pt;font-weight:700;text-transform:uppercase;letter-spacing:.06em;text-align:left;}
+.tbl thead th:nth-child(1){background:var(--ink);color:rgba(255,255,255,.65);width:18%;}
+.tbl thead th:nth-child(2){background:var(--fog);color:var(--ink3);width:38%;}
+.tbl thead th:nth-child(3){background:var(--amber);color:var(--ink);width:44%;}
+.tbl tbody tr td{padding:11px 16px;vertical-align:top;border-bottom:1px solid var(--fog2);line-height:1.55;}
+.tbl tbody tr:last-child td{border-bottom:none;}
+.tbl tbody td:nth-child(1){font-family:'Syne',sans-serif;font-weight:700;color:var(--ink);background:var(--fog);}
+.tbl tbody td:nth-child(2){color:var(--ink3);}
+.tbl tbody td:nth-child(3){color:var(--ink2);background:#FFFBF0;font-weight:500;}
+
+/* ── LANGAGE PRO ── */
+.lang-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:24px 0;}
+.lang-item{border-radius:10px;overflow:hidden;border:1.5px solid var(--fog2);}
+.lang-head{padding:10px 14px;font-family:'Syne',sans-serif;font-size:9pt;font-weight:700;letter-spacing:.03em;}
+.lang-cols{display:grid;grid-template-columns:1fr 1fr;}
+.lang-col{padding:10px 14px;}
+.lang-col-title{font-size:7.5pt;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;display:flex;align-items:center;gap:5px;}
+.lang-col-bad .lang-col-title{color:var(--red);}
+.lang-col-good .lang-col-title{color:var(--green);}
+.lang-col-bad{border-right:1px solid var(--fog2);background:var(--red2);}
+.lang-col-good{background:var(--green2);}
+.lang-col p{font-size:8.5pt;line-height:1.55;color:var(--ink3);}
+.lang-col p em{font-style:italic;color:var(--ink2);}
+
+/* ── NON VERBAL GRILLE ── */
+.nv-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:24px 0;}
+.nv-card{border-radius:10px;border:1.5px solid var(--fog2);overflow:hidden;}
+.nv-head{padding:12px 14px;display:flex;align-items:center;gap:8px;background:var(--fog);}
+.nv-icon{font-size:16pt;}
+.nv-name{font-family:'Syne',sans-serif;font-size:10pt;font-weight:700;color:var(--ink);}
+.nv-body{padding:10px 14px;display:grid;grid-template-columns:1fr 1fr;gap:0;}
+.nv-col{padding:8px 6px;}
+.nv-col:first-child{border-right:1px solid var(--fog2);}
+.nv-col-label{font-size:7.5pt;font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:5px;display:flex;align-items:center;gap:4px;}
+.nv-col.good .nv-col-label{color:var(--green);}
+.nv-col.bad .nv-col-label{color:var(--red);}
+.nv-col p{font-size:8.5pt;color:var(--ink3);line-height:1.5;}
+
+/* ── SIGNAUX CLIENT ── */
+.signaux-tbl{width:100%;border-collapse:separate;border-spacing:0;border-radius:var(--r);overflow:hidden;border:1.5px solid var(--fog2);margin:20px 0;font-size:9.5pt;}
+.signaux-tbl thead th{padding:11px 16px;font-family:'Syne',sans-serif;font-size:8.5pt;font-weight:700;text-transform:uppercase;letter-spacing:.06em;text-align:left;background:var(--ink2);color:rgba(255,255,255,.7);}
+.signaux-tbl tbody td{padding:11px 16px;vertical-align:top;border-bottom:1px solid var(--fog2);line-height:1.55;}
+.signaux-tbl tbody tr:last-child td{border-bottom:none;}
+.signaux-tbl tbody td:nth-child(1){font-weight:700;width:22%;}
+.signaux-tbl tbody td:nth-child(2){color:var(--ink3);width:38%;}
+.signaux-tbl tbody td:nth-child(3){font-weight:500;width:40%;}
+.tag-green{display:inline-flex;align-items:center;gap:4px;background:var(--green2);color:var(--green);font-size:8pt;font-weight:700;padding:2px 8px;border-radius:100px;}
+.tag-amber{display:inline-flex;align-items:center;gap:4px;background:#FEF3C7;color:#92400E;font-size:8pt;font-weight:700;padding:2px 8px;border-radius:100px;}
+.tag-red{display:inline-flex;align-items:center;gap:4px;background:var(--red2);color:var(--red);font-size:8pt;font-weight:700;padding:2px 8px;border-radius:100px;}
+.sig-row-green td:nth-child(3){color:var(--green);background:var(--green2);}
+.sig-row-amber td:nth-child(3){color:#92400E;background:#FEF3C7;}
+.sig-row-red td:nth-child(3){color:var(--red);background:var(--red2);}
+
+/* ── ÉCOUTE ACTIVE ── */
+.ecoute-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0;}
+.ec-card{border-radius:10px;border:1.5px solid var(--fog2);overflow:hidden;}
+.ec-head{padding:12px 16px;background:var(--ink);display:flex;align-items:center;gap:10px;}
+.ec-icon{font-size:16pt;}
+.ec-name{font-family:'Syne',sans-serif;font-size:10pt;font-weight:700;color:#fff;}
+.ec-body{padding:12px 16px;}
+.ec-what{font-size:8.5pt;font-weight:600;color:var(--ink3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px;}
+.ec-action{font-size:9pt;color:var(--ink2);line-height:1.55;margin-bottom:8px;}
+.ec-effect{font-size:8.5pt;color:var(--teal);font-style:italic;padding-top:6px;border-top:1px solid var(--fog2);}
+
+/* ── REFORMULATION ── */
+.refo-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:24px 0;}
+.refo-card{border-radius:10px;border:1.5px solid var(--fog2);overflow:hidden;}
+.refo-type{padding:10px 16px;font-family:'Syne',sans-serif;font-size:10pt;font-weight:700;}
+.refo-body{padding:12px 16px;border-top:1.5px solid var(--fog2);}
+.refo-def{font-size:8.5pt;color:var(--ink3);margin-bottom:8px;line-height:1.5;}
+.refo-ex{background:var(--fog);border-radius:6px;padding:8px 10px;font-size:8.5pt;font-style:italic;color:var(--ink2);line-height:1.55;margin-bottom:6px;}
+.refo-obj{font-size:8pt;font-weight:600;color:var(--teal);}
+.r-eco .refo-type{background:#EEF4FF;color:#2B5BE8;}
+.r-miroir .refo-type{background:var(--fog);color:var(--ink);}
+.r-resume .refo-type{background:#EEFAF7;color:var(--teal);}
+.r-clarif .refo-type{background:#FFF8E8;color:var(--amber);}
+
+/* ── 4 RÉFLEXES ── */
+.reflexes{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0;}
+.reflex-item{display:flex;gap:16px;align-items:flex-start;padding:16px;background:var(--ink);border-radius:10px;}
+.reflex-num{font-family:'Syne',sans-serif;font-size:28pt;font-weight:800;color:rgba(255,255,255,.12);line-height:1;flex-shrink:0;width:44px;text-align:center;}
+.reflex-text{font-size:9.5pt;color:rgba(255,255,255,.8);line-height:1.6;}
+.reflex-text strong{color:var(--amber);}
+
+/* ── POINTS CLÉS ── */
+.cles{background:var(--ink2);padding:28px 56px;}
+.cles-title{font-family:'DM Mono',monospace;font-size:8.5pt;font-weight:500;color:var(--amber);text-transform:uppercase;letter-spacing:.1em;margin-bottom:18px;}
+.cles-list{display:grid;grid-template-columns:1fr 1fr;gap:8px 32px;list-style:none;}
+.cles-list li{font-size:9.5pt;color:rgba(255,255,255,.7);line-height:1.55;display:flex;gap:10px;align-items:flex-start;}
+.cles-list li::before{content:'—';color:var(--amber);font-weight:700;flex-shrink:0;}
+.cles-list li strong{color:rgba(255,255,255,.95);}
+
+footer{background:var(--fog);border-top:1px solid var(--fog2);padding:12px 56px;display:flex;justify-content:space-between;align-items:center;font-family:'DM Mono',monospace;font-size:7.5pt;color:var(--ink3);}
+@media print{body{max-width:none;}.section{page-break-inside:avoid;}}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-dots"></div>
+  <div class="cover-glow"></div>
+  <div class="cover-glow2"></div>
+  <div class="cover-eyebrow">BTS CCST — Bloc 1 &nbsp;·&nbsp; Fiche Ressource FR2</div>
+  <h1>Communication <em>interpersonnelle</em> en négociation TC</h1>
+  <p class="cover-sub">Verbal · Paraverbal · Non verbal · Écoute active · Reformulation · Langage professionnel</p>
+  <div class="cover-pills">
+    <span class="pill pill-amber">C1.1 — Préparer une négociation TC</span>
+    <span class="pill pill-teal">Règle des 3V — Mehrabian</span>
+    <span class="pill pill-dim">Signaux client · Reformulation</span>
+  </div>
+</div>
+
+<!-- INTRO -->
+<div class="intro">
+  <p>En négociation BtoB, la maîtrise de la communication est un <strong>avantage concurrentiel décisif</strong>. Les études montrent que 93 % de l'impact d'un message passe par le paraverbal et le non verbal. Le TC qui maîtrise ces trois dimensions communique avec plus d'autorité, détecte mieux les signaux d'achat et d'objection, et instaure plus rapidement un <strong>climat de confiance propice à la décision</strong>.</p>
+</div>
+
+<div class="body">
+
+<!-- SECTION 1 -->
+<div class="section">
+  <div class="s-label">01 — Règle des 3V</div>
+  <div class="s-title">L'impact réel d'un message — Mehrabian</div>
+
+  <div class="mehrabian">
+    <div class="meh-card m-verbal">
+      <div class="meh-top">
+        <div class="meh-pct">7%</div>
+        <div class="meh-dim">Verbal</div>
+        <div class="meh-sub">Les mots</div>
+      </div>
+      <div class="meh-bar" style="width:7%;min-width:14px;"></div>
+      <div class="meh-body">
+        <div class="meh-row"><span class="meh-row-key">Contenu</span><span>Mots, vocabulaire, arguments, chiffres</span></div>
+        <div class="meh-row"><span class="meh-row-key">Maîtrise</span><span>Grande — se prépare en amont (argumentaire, réponses aux objections)</span></div>
+      </div>
+    </div>
+    <div class="meh-card m-para">
+      <div class="meh-top">
+        <div class="meh-pct">38%</div>
+        <div class="meh-dim">Paraverbal</div>
+        <div class="meh-sub">La voix</div>
+      </div>
+      <div class="meh-bar" style="width:38%;"></div>
+      <div class="meh-body">
+        <div class="meh-row"><span class="meh-row-key">Contenu</span><span>Ton, rythme, débit, volume, silences, intonation</span></div>
+        <div class="meh-row"><span class="meh-row-key">Maîtrise</span><span>Moyenne — se travaille par la préparation et l'entraînement oral</span></div>
+      </div>
+    </div>
+    <div class="meh-card m-nonverbal">
+      <div class="meh-top">
+        <div class="meh-pct">55%</div>
+        <div class="meh-dim">Non verbal</div>
+        <div class="meh-sub">Le corps</div>
+      </div>
+      <div class="meh-bar" style="width:55%;"></div>
+      <div class="meh-body">
+        <div class="meh-row"><span class="meh-row-key">Contenu</span><span>Posture, gestes, regard, expressions, tenue, proxémique</span></div>
+        <div class="meh-row"><span class="meh-row-key">Maîtrise</span><span>Faible consciente — réflexes à développer par la pratique</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="meh-warn"><strong>⚠ Règle d'or :</strong> En cas d'incohérence entre verbal et non verbal, l'interlocuteur croit toujours le non verbal.</div>
+</div>
+
+<!-- SECTION 2 -->
+<div class="section">
+  <div class="s-label">02 — Communication verbale</div>
+  <div class="s-title">Les composantes de la voix à maîtriser</div>
+  <table class="tbl">
+    <thead><tr><th>Composante</th><th>Principes d'application</th><th>Application en négociation BtoB</th></tr></thead>
+    <tbody>
+      <tr><td>Ton</td><td>Varier le ton pour éviter la monotonie. Ton impersonnel pour informer, plus personnel pour convaincre. Jamais monocorde.</td><td>Monter le ton sur les bénéfices clés. Baisser pour donner du sérieux à un argument financier.</td></tr>
+      <tr><td>Débit / Rythme</td><td>Ralentir sur les points importants (prix, délai, garantie). Adapter son rythme à celui de l'interlocuteur. Bien articuler.</td><td>Ralentir quand on annonce le prix ou une condition clé. Laisser le silence agir.</td></tr>
+      <tr><td>Silence</td><td>Le silence est un outil de négociation puissant. Après une annonce de prix, ne pas rompre le silence le premier.</td><td>Après l'annonce du prix : se taire. Qui parle en premier après le silence perd l'avantage.</td></tr>
+      <tr><td>Volume</td><td>Adapter au contexte (bureau, salle de réunion, téléphone). Jamais trop bas ni trop fort.</td><td>En réunion multi-décideurs : voix portante. En tête-à-tête : modulée, posée.</td></tr>
+      <tr><td>Registre de langage</td><td>Adapter au niveau de l'interlocuteur : technique avec les experts, accessible avec les non-techniciens, formel avec la direction.</td><td>Avec un DAF : langage financier (ROI, TCO, cash-flow). Avec un technicien : specs, normes, certifications.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="s-title" style="margin-top:32px;">Le langage professionnel — formulations à maîtriser</div>
+  <div class="lang-grid">
+    <div class="lang-item">
+      <div class="lang-head" style="background:#FFF0ED;color:var(--coral);">Mots négatifs & expressions dubitatives</div>
+      <div class="lang-cols">
+        <div class="lang-col lang-col-bad">
+          <div class="lang-col-title">❌ À éviter</div>
+          <p><em>Problème, souci, ennui, danger, panne, risque, réclamation, retard, crainte...</em><br><br><em>Je pense, je crois, il me semble, environ, peut-être...</em></p>
+        </div>
+        <div class="lang-col lang-col-good">
+          <div class="lang-col-title">✅ À utiliser</div>
+          <p><em>Point à examiner, sujet à traiter, élément à optimiser, situation à sécuriser...</em><br><br><em>Nous garantissons, notre solution assure, les données confirment...</em></p>
+        </div>
+      </div>
+    </div>
+    <div class="lang-item">
+      <div class="lang-head" style="background:#FFF0ED;color:var(--coral);">Formes négatives & opposition</div>
+      <div class="lang-cols">
+        <div class="lang-col lang-col-bad">
+          <div class="lang-col-title">❌ À éviter</div>
+          <p><em>Ne voulez-vous pas... ? Vous n'auriez pas besoin de... ?</em><br><br><em>Pas d'accord, vous avez tort, c'est faux, vous faites erreur...</em></p>
+        </div>
+        <div class="lang-col lang-col-good">
+          <div class="lang-col-title">✅ À utiliser</div>
+          <p><em>Souhaitez-vous... ? Avez-vous besoin de... ?</em><br><br><em>Je comprends votre point. Permettez-moi d'apporter un éclairage complémentaire...</em></p>
+        </div>
+      </div>
+    </div>
+    <div class="lang-item">
+      <div class="lang-head" style="background:#FFF0ED;color:var(--coral);">Formules d'infériorité & faux appels à la confiance</div>
+      <div class="lang-cols">
+        <div class="lang-col lang-col-bad">
+          <div class="lang-col-title">❌ À éviter</div>
+          <p><em>Je m'excuse de vous déranger, je suis désolé de vous faire perdre votre temps...</em><br><br><em>Croyez-moi, franchement, sincèrement...</em></p>
+        </div>
+        <div class="lang-col lang-col-good">
+          <div class="lang-col-title">✅ À utiliser</div>
+          <p><em>Je suis à votre disposition, notre rendez-vous va vous permettre de... → posture d'expert</em><br><br><em>Prouver par les faits : chiffres, références clients, certifications.</em></p>
+        </div>
+      </div>
+    </div>
+    <div class="lang-item">
+      <div class="lang-head" style="background:#FFF0ED;color:var(--coral);">Conditionnel de doute & formules bateau</div>
+      <div class="lang-cols">
+        <div class="lang-col lang-col-bad">
+          <div class="lang-col-title">❌ À éviter</div>
+          <p><em>Ce serait possible, on pourrait éventuellement, ça devrait marcher...</em><br><br><em>On fait le maximum, on fera l'impossible, c'est notre cœur de métier...</em></p>
+        </div>
+        <div class="lang-col lang-col-good">
+          <div class="lang-col-title">✅ À utiliser</div>
+          <p><em>Notre solution est opérationnelle en X jours. Nous livrons le... Votre ROI est de X mois.</em><br><br><em>Notre taux de satisfaction client est de 94 %. Nous avons livré X projets similaires.</em></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3 -->
+<div class="section">
+  <div class="s-label">03 — Communication non verbale</div>
+  <div class="s-title">Ce que le corps dit — signaux à maîtriser</div>
+  <div class="nv-grid">
+    <div class="nv-card">
+      <div class="nv-head"><div class="nv-icon">👁</div><div class="nv-name">Regard</div></div>
+      <div class="nv-body">
+        <div class="nv-col good">
+          <div class="nv-col-label">✅ Adopter</div>
+          <p>Contact visuel régulier. Regard direct et chaleureux. En multi-décideurs : tour à tour.</p>
+        </div>
+        <div class="nv-col bad">
+          <div class="nv-col-label">🚨 Corriger</div>
+          <p>Regard fuyant (manque de confiance), regard fixe (intimidation), yeux baissés (soumission).</p>
+        </div>
+      </div>
+    </div>
+    <div class="nv-card">
+      <div class="nv-head"><div class="nv-icon">🧍</div><div class="nv-name">Posture</div></div>
+      <div class="nv-body">
+        <div class="nv-col good">
+          <div class="nv-col-label">✅ Adopter</div>
+          <p>Légèrement penché en avant. Dos droit. Décontracté sans être avachi.</p>
+        </div>
+        <div class="nv-col bad">
+          <div class="nv-col-label">🚨 Corriger</div>
+          <p>Bras croisés (fermeture). Corps en retrait (désintérêt). Jambes tournées vers la sortie.</p>
+        </div>
+      </div>
+    </div>
+    <div class="nv-card">
+      <div class="nv-head"><div class="nv-icon">🤲</div><div class="nv-name">Gestes</div></div>
+      <div class="nv-body">
+        <div class="nv-col good">
+          <div class="nv-col-label">✅ Adopter</div>
+          <p>Mains visibles et ouvertes. Gestes d'ouverture accompagnant le discours. Hochements positifs.</p>
+        </div>
+        <div class="nv-col bad">
+          <div class="nv-col-label">🚨 Corriger</div>
+          <p>Pointer du doigt (agressif). Gestes parasites (stylo). Toucher son visage (doute).</p>
+        </div>
+      </div>
+    </div>
+    <div class="nv-card">
+      <div class="nv-head"><div class="nv-icon">📏</div><div class="nv-name">Proxémique</div></div>
+      <div class="nv-body">
+        <div class="nv-col good">
+          <div class="nv-col-label">✅ Adopter</div>
+          <p>Zone sociale (1,20 m à 3 m) pour un entretien professionnel standard en face à face.</p>
+        </div>
+        <div class="nv-col bad">
+          <div class="nv-col-label">🚨 Corriger</div>
+          <p>Zone intime (&lt;50 cm) : intrusif. Zone publique (&gt;3 m) : trop distant, peu engageant.</p>
+        </div>
+      </div>
+    </div>
+    <div class="nv-card" style="grid-column:1/-1;">
+      <div class="nv-head"><div class="nv-icon">👔</div><div class="nv-name">Tenue vestimentaire</div></div>
+      <div class="nv-body">
+        <div class="nv-col good">
+          <div class="nv-col-label">✅ Adopter</div>
+          <p>Adaptée au secteur du client (costume pour le tertiaire, tenue de chantier adaptée pour les visites techniques). Soignée, représentative de l'entreprise.</p>
+        </div>
+        <div class="nv-col bad">
+          <div class="nv-col-label">🚨 Corriger</div>
+          <p>Trop décontractée dans un contexte formel. Inadaptée au contexte (costume sur un chantier BTP).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="s-title" style="margin-top:32px;">Lire les expressions du client — signaux à détecter</div>
+  <table class="signaux-tbl">
+    <thead><tr><th>Expression</th><th>Signes observables</th><th>Action recommandée</th></tr></thead>
+    <tbody>
+      <tr class="sig-row-green">
+        <td><span class="tag-green">✅ Intérêt / Signal d'achat</span></td>
+        <td>Penché en avant, sourcils levés, hochements de tête, questions précises sur les délais et la mise en œuvre</td>
+        <td>Renforcer l'argumentation, proposer de passer à l'étape suivante (offre, devis, démonstration)</td>
+      </tr>
+      <tr class="sig-row-amber">
+        <td><span class="tag-amber">⚠ Réflexion / Hésitation</span></td>
+        <td>Tête levée, regard absent, moue légère, silence prolongé, doigts posés sur la bouche</td>
+        <td>Laisser le silence. Reformuler : « Quel est votre point de vigilance principal ? »</td>
+      </tr>
+      <tr class="sig-row-red">
+        <td><span class="tag-red">🚨 Doute / Objection</span></td>
+        <td>Lèvre inférieure relevée, sourcils froncés, légère moue, bras croisés, recul du corps</td>
+        <td>Traiter l'objection immédiatement : « Vous semblez avoir une réserve sur ce point... »</td>
+      </tr>
+      <tr class="sig-row-red">
+        <td><span class="tag-red">🚨 Méfiance / Résistance</span></td>
+        <td>Yeux mi-clos, sourire fermé, bras croisés, corps tourné de côté, réponses courtes</td>
+        <td>Revenir à l'écoute active. Poser une question ouverte sur ses priorités. Ne pas forcer.</td>
+      </tr>
+      <tr class="sig-row-amber">
+        <td><span class="tag-amber">⚠ Irritation / Impatience</span></td>
+        <td>Regard fixe, bouche entr'ouverte, mâchoire avancée, tapotement des doigts</td>
+        <td>Faire une pause. Reconnaître le malaise : « Je sens que ce point mérite qu'on s'y attarde. »</td>
+      </tr>
+      <tr class="sig-row-red">
+        <td><span class="tag-red">🚨 Indifférence</span></td>
+        <td>Visage inerte, regard vague, vers la fenêtre ou l'écran, absence de questions</td>
+        <td>Changer d'approche, impliquer : « Qu'est-ce qui compte le plus pour vous dans ce projet ? »</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SECTION 4 -->
+<div class="section">
+  <div class="s-label">04 — Écoute active</div>
+  <div class="s-title">Comprendre avant d'argumenter — Carl Rogers</div>
+  <div class="ecoute-grid">
+    <div class="ec-card">
+      <div class="ec-head"><div class="ec-icon">📵</div><div class="ec-name">Disponibilité totale</div></div>
+      <div class="ec-body">
+        <div class="ec-what">Ce que fait le TC</div>
+        <div class="ec-action">Téléphone rangé, pas de prise de notes frénétique, contact visuel maintenu, absence de regard vers la montre.</div>
+        <div class="ec-effect">→ Le client se sent respecté et considéré. Il s'exprime plus librement.</div>
+      </div>
+    </div>
+    <div class="ec-card">
+      <div class="ec-head"><div class="ec-icon">🤫</div><div class="ec-name">Silence actif</div></div>
+      <div class="ec-body">
+        <div class="ec-what">Ce que fait le TC</div>
+        <div class="ec-action">Laisser des silences après les réponses du client. Ne pas chercher à remplir. Attendre qu'il complète.</div>
+        <div class="ec-effect">→ Le client va naturellement enrichir sa réponse et révéler des informations non sollicitées.</div>
+      </div>
+    </div>
+    <div class="ec-card">
+      <div class="ec-head"><div class="ec-icon">🙂</div><div class="ec-name">Signaux d'encouragement</div></div>
+      <div class="ec-body">
+        <div class="ec-what">Ce que fait le TC</div>
+        <div class="ec-action">Hochements de tête, « Je comprends », « Tout à fait », « C'est intéressant » pour montrer que l'on suit.</div>
+        <div class="ec-effect">→ Le client continue à parler et développer ses idées. Sentiment d'être écouté.</div>
+      </div>
+    </div>
+    <div class="ec-card">
+      <div class="ec-head"><div class="ec-icon">🤝</div><div class="ec-name">Empathie</div></div>
+      <div class="ec-body">
+        <div class="ec-what">Ce que fait le TC</div>
+        <div class="ec-action">Se mettre à la place du client, comprendre ses contraintes (budget, délai, hiérarchie, risques). Ne pas juger.</div>
+        <div class="ec-effect">→ Crée un lien de confiance. Le client perçoit le TC comme un partenaire, pas un vendeur.</div>
+      </div>
+    </div>
+    <div class="ec-card" style="grid-column:1/-1;">
+      <div class="ec-head"><div class="ec-icon">📝</div><div class="ec-name">Prise de notes visible</div></div>
+      <div class="ec-body">
+        <div class="ec-what">Ce que fait le TC</div>
+        <div class="ec-action">Noter quelques mots clés devant le client en signalant que l'on prend note de ses priorités.</div>
+        <div class="ec-effect">→ Valorise le client. Prouve que ses propos sont importants et seront intégrés à l'offre.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 5 -->
+<div class="section">
+  <div class="s-label">05 — Reformulation</div>
+  <div class="s-title">Les 4 techniques de reformulation — valider pour avancer</div>
+  <div class="refo-grid">
+    <div class="refo-card r-eco">
+      <div class="refo-type">Écho (perroquet)</div>
+      <div class="refo-body">
+        <div class="refo-def">Répéter les derniers mots du client avec une intonation interrogative.</div>
+        <div class="refo-ex">Client : « Notre budget est contraint. »<br>TC : « Contraint... ? »</div>
+        <div class="refo-obj">→ Faire préciser sans interroger directement. Montre qu'on a entendu.</div>
+      </div>
+    </div>
+    <div class="refo-card r-miroir">
+      <div class="refo-type">Miroir (reflet)</div>
+      <div class="refo-body">
+        <div class="refo-def">Reformuler avec ses propres mots, en paraphrase fidèle.</div>
+        <div class="refo-ex">« Si je comprends bien, votre priorité est de réduire les coûts de maintenance sur 3 ans, c'est cela ? »</div>
+        <div class="refo-obj">→ Vérifier la compréhension. L'interlocuteur se sent compris.</div>
+      </div>
+    </div>
+    <div class="refo-card r-resume">
+      <div class="refo-type">Résumé (synthèse)</div>
+      <div class="refo-body">
+        <div class="refo-def">Résumer les points clés exprimés depuis le début de l'entretien.</div>
+        <div class="refo-ex">« Pour résumer vos attentes : délai de 8 semaines, budget de 250 K€, priorité à la maintenance préventive. C'est bien cela ? »</div>
+        <div class="refo-obj">→ Recentrer la négociation. Valider les besoins avant de présenter l'offre.</div>
+      </div>
+    </div>
+    <div class="refo-card r-clarif">
+      <div class="refo-type">Clarification (élucidation)</div>
+      <div class="refo-body">
+        <div class="refo-def">Explorer les non-dits et les sous-entendus au-delà de ce qui est dit.</div>
+        <div class="refo-ex">« Vous mentionnez un problème de délai — cela signifie-t-il que vous avez une contrainte réglementaire à respecter avant le... ? »</div>
+        <div class="refo-obj">→ Révéler les motivations profondes. Ouvre de nouvelles perspectives d'argumentation.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 4 RÉFLEXES -->
+<div class="section">
+  <div class="s-label">Synthèse</div>
+  <div class="s-title">Les 4 réflexes de communication du TC en négociation</div>
+  <div class="reflexes">
+    <div class="reflex-item">
+      <div class="reflex-num">1</div>
+      <div class="reflex-text"><strong>Soigner le non verbal avant même de parler :</strong> posture ouverte, regard direct, tenue adaptée au secteur du client.</div>
+    </div>
+    <div class="reflex-item">
+      <div class="reflex-num">2</div>
+      <div class="reflex-text"><strong>Bannir les mots noirs, les formes négatives et le conditionnel de doute</strong> → parler au présent de l'indicatif, s'engager sur des faits.</div>
+    </div>
+    <div class="reflex-item">
+      <div class="reflex-num">3</div>
+      <div class="reflex-text"><strong>Écouter avant d'argumenter :</strong> 70 % du temps de parole au client en phase de découverte. Se taire après l'annonce du prix.</div>
+    </div>
+    <div class="reflex-item">
+      <div class="reflex-num">4</div>
+      <div class="reflex-text"><strong>Lire les signaux non verbaux du client :</strong> détecter l'hésitation, le doute, l'intérêt avant qu'il les exprime verbalement.</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /body -->
+
+<!-- POINTS CLÉS -->
+<div class="cles">
+  <div class="cles-title">// Points clés à retenir — C1.1 FR2</div>
+  <ul class="cles-list">
+    <li><strong>Règle des 3V :</strong> 7% mots / 38% voix / 55% corps — le non verbal prime toujours sur le verbal en cas d'incohérence.</li>
+    <li><strong>Voix :</strong> maîtriser le ton, le débit, le silence, le volume et le registre selon l'interlocuteur (DAF, technicien, direction).</li>
+    <li><strong>Langage pro :</strong> bannir les mots noirs, le conditionnel de doute, les formes négatives — prouver par les faits et les chiffres.</li>
+    <li><strong>Non verbal :</strong> regard, posture, gestes, proxémique, tenue — 5 dimensions à maîtriser consciemment.</li>
+    <li><strong>6 signaux clients :</strong> intérêt, hésitation, doute, méfiance, irritation, indifférence — chacun appelle une action différente.</li>
+    <li><strong>4 reformulations :</strong> écho, miroir, résumé, clarification — valider avant d'argumenter, toujours.</li>
+  </ul>
+</div>
+
+<footer>
+  <span>BTS CCST – Bloc 1 · Compétence C1.1</span>
+  <span>FR2 — Communication interpersonnelle en négociation TC · Lycée Jean Perrin, Marseille</span>
+</footer>
+
+</body>
+</html>
