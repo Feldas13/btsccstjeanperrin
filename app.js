@@ -55,39 +55,39 @@ let state = {section:'home', mat:'com', type:'fiches', comp:'C1.1'};
 // Les PDF sont des liens Google Drive — aucun fichier lourd stocké localement.
 
 const STATIC_RESOURCES = [
-  {id:"r001",title:"FR1 Communication interpersonnelle et forme de la négociation TC",matiere:"com",type:"fiches",comp:"C1.1",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1TLDmdqtOP-0wORCSLmGPWiuEibVDhVdI/preview",htmlKey:"FR1_C1.1"},
-  {id:"r002",title:"FR2 Communication interpersonnelle en négociation technico-commerciale",matiere:"com",type:"fiches",comp:"C1.1",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1WgdufEwSMk_qMqKbvAEDaDl3pcFSUzQk/preview",htmlKey:"FR2_C1.1"},
-  {id:"r003",title:"FR3 Le profil client BtoB et valeur client",matiere:"com",type:"fiches",comp:"C1.1",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1PeXKYbhQ8TvLbeF8TvWevWkKEQcdEdus/preview",htmlKey:"FR3_C1.1"},
-  {id:"r004",title:"FR4 Le processus d\'achat BtoB",matiere:"com",type:"fiches",comp:"C1.1",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1LvrWMhbOX8STTR0UytO6rYlOH661pVnG/preview",htmlKey:"FR4_C1.1"},
-  {id:"r005",title:"FR5 Situation de marché et Analyse concurrentielle",matiere:"com",type:"fiches",comp:"C1.1",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1B3qSvzXGRgAKnRHtkDWcTAp3-H_7q9rU/preview",htmlKey:"FR5_C1.1"},
-  {id:"r006",title:"FR6 Paramètres commerciaux",matiere:"com",type:"fiches",comp:"C1.1",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1sVWJbO0FFAEU3X6EL8d38jdT_ZFVzfYH/preview",htmlKey:"FR6_C1.1"},
-  {id:"r007",title:"FR7 Cadre juridique de la vente B2B",matiere:"com",type:"fiches",comp:"C1.1",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1V_Kfs7fBN1SmBbqJ56hPk4O2BcDaxMDo/preview",htmlKey:"FR7_C1.1"},
-  {id:"r008",title:"FR8 Stratégie de Négociation Technico-commerciale",matiere:"com",type:"fiches",comp:"C1.1",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/14Jtlua-eFGwTZYOAgkY6O1afyTJqwEYY/preview",htmlKey:"FR8_C1.1"},
+  {id:"r001",title:"FR1 Communication interpersonnelle et forme de la négociation TC",matiere:"com",type:"fiches",comp:"C1.1",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1TLDmdqtOP-0wORCSLmGPWiuEibVDhVdI/preview"},
+  {id:"r002",title:"FR2 Communication interpersonnelle en négociation technico-commerciale",matiere:"com",type:"fiches",comp:"C1.1",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1WgdufEwSMk_qMqKbvAEDaDl3pcFSUzQk/preview"},
+  {id:"r003",title:"FR3 Le profil client BtoB et valeur client",matiere:"com",type:"fiches",comp:"C1.1",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1PeXKYbhQ8TvLbeF8TvWevWkKEQcdEdus/preview"},
+  {id:"r004",title:"FR4 Le processus d\'achat BtoB",matiere:"com",type:"fiches",comp:"C1.1",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1LvrWMhbOX8STTR0UytO6rYlOH661pVnG/preview"},
+  {id:"r005",title:"FR5 Situation de marché et Analyse concurrentielle",matiere:"com",type:"fiches",comp:"C1.1",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1B3qSvzXGRgAKnRHtkDWcTAp3-H_7q9rU/preview"},
+  {id:"r006",title:"FR6 Paramètres commerciaux",matiere:"com",type:"fiches",comp:"C1.1",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1sVWJbO0FFAEU3X6EL8d38jdT_ZFVzfYH/preview"},
+  {id:"r007",title:"FR7 Cadre juridique de la vente B2B",matiere:"com",type:"fiches",comp:"C1.1",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1V_Kfs7fBN1SmBbqJ56hPk4O2BcDaxMDo/preview"},
+  {id:"r008",title:"FR8 Stratégie de Négociation Technico-commerciale",matiere:"com",type:"fiches",comp:"C1.1",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/14Jtlua-eFGwTZYOAgkY6O1afyTJqwEYY/preview"},
   {id:"r009",title:"FR1 La vente-conseil en BtoB",matiere:"com",type:"fiches",comp:"C1.2",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/18f3tnyyjkF9kJGeG87dWY0E1uB_WGHyO/preview",htmlKey:"FR1_C1.2"},
-  {id:"r010",title:"FR2 Construire et présenter une solution",matiere:"com",type:"fiches",comp:"C1.2",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1HGbs1B3Z8FcEVLfxt3mfVEcg0IdB2yiS/preview",htmlKey:"FR2_C1.2"},
-  {id:"r011",title:"FR3 Analyser et positionner son offre",matiere:"com",type:"fiches",comp:"C1.2",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1XdN9A5G7c0_CtU4NZmLam6C0yfbdgGKb/preview",htmlKey:"FR3_C1.2"},
-  {id:"r012",title:"FR4 Répondre à un CDC ou appel d\'offres",matiere:"com",type:"fiches",comp:"C1.2",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1J9HF1nSLRcpvIw8nsHuII2c9WeBi2tSi/preview",htmlKey:"FR4_C1.2"},
-  {id:"r013",title:"FR5 Les outils phygitaux d\'aide à la vente",matiere:"com",type:"fiches",comp:"C1.2",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1fGP_eaDnOafcq-6pmkkaffptpOETkA1k/preview",htmlKey:"FR5_C1.2"},
-  {id:"r014",title:"FR6 La communication écrite professionnelle en BtoB",matiere:"com",type:"fiches",comp:"C1.2",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1R97d_m_a6D0M7ZtUMCmaAyQskQatOjup/preview",htmlKey:"FR6_C1.2"},
-  {id:"r015",title:"FR7 Travailler en mode collaboratif",matiere:"com",type:"fiches",comp:"C1.2",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1jMpkfV68SqHzJtHxvYUgR7jPvtcnBMbE/preview",htmlKey:"FR7_C1.2"},
-  {id:"r016",title:"FR8 La veille commerciale et technique du TC",matiere:"com",type:"fiches",comp:"C1.2",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1AB_2k_2_48RQMoRByqDH7u-Atlvf59LO/preview",htmlKey:"FR8_C1.2"},
-  {id:"r017",title:"FR1 Évaluer et gérer le risque client",matiere:"com",type:"fiches",comp:"C1.3",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/110JbmdTiws_MQ5xJNBPjPf7SLQV1ivqH/preview",htmlKey:"FR1_C1.3"},
-  {id:"r018",title:"FR2 Mesurer la solvabilité d\'un client",matiere:"com",type:"fiches",comp:"C1.3",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1XT3LKSDHtUaFKFP4-bSPf3vrY596tilp/preview",htmlKey:"FR2_C1.3"},
-  {id:"r019",title:"FR3 Proposer des modes de règlement et de financement",matiere:"com",type:"fiches",comp:"C1.3",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/13_FWlBaQJsWQTk4nwGZjZeLPvFvYKDrX/preview",htmlKey:"FR3_C1.3"},
-  {id:"r020",title:"FR4 Défendre les marges et gérer les concessions",matiere:"com",type:"fiches",comp:"C1.3",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1JjAb3wCqg13sgD32DHWp_3a4vaBfwXJP/preview",htmlKey:"FR4_C1.3"},
-  {id:"r021",title:"FR1 Déroulé Complet de l\'Oral de Négociation",matiere:"com",type:"fiches",comp:"C1.4",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1-XmZiEfG8I5yc7MVo10ulQ6UNYqO31_e/preview",htmlKey:"FR1_C1.4"},
-  {id:"r022",title:"FR2 Prise de contact et installation",matiere:"com",type:"fiches",comp:"C1.4",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1yUPfCg5w189rNqA2mKEqO-9ZjUt3sPIK/preview",htmlKey:"FR2_C1.4"},
-  {id:"r023",title:"FR3 Découverte des besoins",matiere:"com",type:"fiches",comp:"C1.4",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1sQi353KiAMXxD2Yt0SCywp5kNcUTXFAT/preview",htmlKey:"FR3_C1.4"},
-  {id:"r024",title:"FR4 Argumentation",matiere:"com",type:"fiches",comp:"C1.4",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1EqPhajEEpfWtAHY5G_MLKCU4pUEHVxzA/preview",htmlKey:"FR4_C1.4"},
-  {id:"r025",title:"FR5 Traitement des objections",matiere:"com",type:"fiches",comp:"C1.4",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/14Dx8XuXlVfX7Z8KiLxPa4f817bNvwLId/preview",htmlKey:"FR5_C1.4"},
-  {id:"r026",title:"FR6 Conclusion et prise de congé",matiere:"com",type:"fiches",comp:"C1.4",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1x5aUJ_7uiOv27DVQpO-rgsDasJyfF2Rq/preview",htmlKey:"FR6_C1.4"},
-  {id:"r027",title:"FR1 Le compte rendu de visite commercial",matiere:"com",type:"fiches",comp:"C1.5",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1fViKVquyI6qkEE4O8KWS0nl3wZ7DY7sd/preview",htmlKey:"FR1_C1.5"},
-  {id:"r028",title:"FR2 Les écrits professionnels post-entretien",matiere:"com",type:"fiches",comp:"C1.5",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/13YmEiiQO0IcL5EbazHMJQr-YGm009A1i/preview",htmlKey:"FR2_C1.5"},
-  {id:"r029",title:"FR3 CRM et traçabilité des échanges client",matiere:"com",type:"fiches",comp:"C1.5",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1xJ0PLkDCQqgrRfth6CEcJwLlZ9UTJEBe/preview",htmlKey:"FR3_C1.5"},
-  {id:"r030",title:"FR4 Mesurer et gérer la satisfaction client",matiere:"com",type:"fiches",comp:"C1.5",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1VHRSiMUa7vihG6OQzRJwBuG9DNVj2Q4k/preview",htmlKey:"FR4_C1.5"},
-  {id:"r031",title:"FR5 La gestion des litiges et des dysfonctionnements",matiere:"com",type:"fiches",comp:"C1.5",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1x_JpzvdLgCR45Uwutk9_h_2V2J_BhINX/preview",htmlKey:"FR5_C1.5"},
-  {id:"r032",title:"FR6 Fidélisation et logique de partenariat durable",matiere:"com",type:"fiches",comp:"C1.5",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1jzYwpVIrL7ROUoaxKoOIZAfm3gwd7xzf/preview",htmlKey:"FR6_C1.5"},
-  {id:"r033",title:"FR7 Conduire le suivi d\'une affaire de A à Z",matiere:"com",type:"fiches",comp:"C1.5",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1i17EXA9fTsSwpFD6W9g4hIpXiItPvIRS/preview",htmlKey:"FR7_C1.5"},
+  {id:"r010",title:"FR2 Construire et présenter une solution",matiere:"com",type:"fiches",comp:"C1.2",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1HGbs1B3Z8FcEVLfxt3mfVEcg0IdB2yiS/preview"},
+  {id:"r011",title:"FR3 Analyser et positionner son offre",matiere:"com",type:"fiches",comp:"C1.2",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1XdN9A5G7c0_CtU4NZmLam6C0yfbdgGKb/preview"},
+  {id:"r012",title:"FR4 Répondre à un CDC ou appel d\'offres",matiere:"com",type:"fiches",comp:"C1.2",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1J9HF1nSLRcpvIw8nsHuII2c9WeBi2tSi/preview"},
+  {id:"r013",title:"FR5 Les outils phygitaux d\'aide à la vente",matiere:"com",type:"fiches",comp:"C1.2",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1fGP_eaDnOafcq-6pmkkaffptpOETkA1k/preview"},
+  {id:"r014",title:"FR6 La communication écrite professionnelle en BtoB",matiere:"com",type:"fiches",comp:"C1.2",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1R97d_m_a6D0M7ZtUMCmaAyQskQatOjup/preview"},
+  {id:"r015",title:"FR7 Travailler en mode collaboratif",matiere:"com",type:"fiches",comp:"C1.2",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1jMpkfV68SqHzJtHxvYUgR7jPvtcnBMbE/preview"},
+  {id:"r016",title:"FR8 La veille commerciale et technique du TC",matiere:"com",type:"fiches",comp:"C1.2",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1AB_2k_2_48RQMoRByqDH7u-Atlvf59LO/preview"},
+  {id:"r017",title:"FR1 Évaluer et gérer le risque client",matiere:"com",type:"fiches",comp:"C1.3",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/110JbmdTiws_MQ5xJNBPjPf7SLQV1ivqH/preview"},
+  {id:"r018",title:"FR2 Mesurer la solvabilité d\'un client",matiere:"com",type:"fiches",comp:"C1.3",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1XT3LKSDHtUaFKFP4-bSPf3vrY596tilp/preview"},
+  {id:"r019",title:"FR3 Proposer des modes de règlement et de financement",matiere:"com",type:"fiches",comp:"C1.3",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/13_FWlBaQJsWQTk4nwGZjZeLPvFvYKDrX/preview"},
+  {id:"r020",title:"FR4 Défendre les marges et gérer les concessions",matiere:"com",type:"fiches",comp:"C1.3",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1JjAb3wCqg13sgD32DHWp_3a4vaBfwXJP/preview"},
+  {id:"r021",title:"FR1 Déroulé Complet de l\'Oral de Négociation",matiere:"com",type:"fiches",comp:"C1.4",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1-XmZiEfG8I5yc7MVo10ulQ6UNYqO31_e/preview"},
+  {id:"r022",title:"FR2 Prise de contact et installation",matiere:"com",type:"fiches",comp:"C1.4",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1yUPfCg5w189rNqA2mKEqO-9ZjUt3sPIK/preview"},
+  {id:"r023",title:"FR3 Découverte des besoins",matiere:"com",type:"fiches",comp:"C1.4",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1sQi353KiAMXxD2Yt0SCywp5kNcUTXFAT/preview"},
+  {id:"r024",title:"FR4 Argumentation",matiere:"com",type:"fiches",comp:"C1.4",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1EqPhajEEpfWtAHY5G_MLKCU4pUEHVxzA/preview"},
+  {id:"r025",title:"FR5 Traitement des objections",matiere:"com",type:"fiches",comp:"C1.4",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/14Dx8XuXlVfX7Z8KiLxPa4f817bNvwLId/preview"},
+  {id:"r026",title:"FR6 Conclusion et prise de congé",matiere:"com",type:"fiches",comp:"C1.4",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1x5aUJ_7uiOv27DVQpO-rgsDasJyfF2Rq/preview"},
+  {id:"r027",title:"FR1 Le compte rendu de visite commercial",matiere:"com",type:"fiches",comp:"C1.5",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1fViKVquyI6qkEE4O8KWS0nl3wZ7DY7sd/preview"},
+  {id:"r028",title:"FR2 Les écrits professionnels post-entretien",matiere:"com",type:"fiches",comp:"C1.5",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/13YmEiiQO0IcL5EbazHMJQr-YGm009A1i/preview"},
+  {id:"r029",title:"FR3 CRM et traçabilité des échanges client",matiere:"com",type:"fiches",comp:"C1.5",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1xJ0PLkDCQqgrRfth6CEcJwLlZ9UTJEBe/preview"},
+  {id:"r030",title:"FR4 Mesurer et gérer la satisfaction client",matiere:"com",type:"fiches",comp:"C1.5",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1VHRSiMUa7vihG6OQzRJwBuG9DNVj2Q4k/preview"},
+  {id:"r031",title:"FR5 La gestion des litiges et des dysfonctionnements",matiere:"com",type:"fiches",comp:"C1.5",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1x_JpzvdLgCR45Uwutk9_h_2V2J_BhINX/preview"},
+  {id:"r032",title:"FR6 Fidélisation et logique de partenariat durable",matiere:"com",type:"fiches",comp:"C1.5",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1jzYwpVIrL7ROUoaxKoOIZAfm3gwd7xzf/preview"},
+  {id:"r033",title:"FR7 Conduire le suivi d\'une affaire de A à Z",matiere:"com",type:"fiches",comp:"C1.5",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1i17EXA9fTsSwpFD6W9g4hIpXiItPvIRS/preview"},
   {id:"r034",title:"1. Fiche Scoring Prise de Contact et Installation",matiere:"com",type:"scoring",comp:"ALL",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1epUKra4Xv320WORmYyq5ZQq5cpjtVOyA/preview"},
   {id:"r035",title:"2. Fiche Scoring Découverte des Besoins",matiere:"com",type:"scoring",comp:"ALL",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/13gdjlGPeqAJrZlUg3NLNLoovLbxJjm6_/preview"},
   {id:"r036",title:"3. Fiche Scoring Argumentation et Objections",matiere:"com",type:"scoring",comp:"ALL",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1iu_ZnydNTilncM-cMqSCFT9yLHjjMgfc/preview"},
@@ -99,62 +99,64 @@ const STATIC_RESOURCES = [
   {id:"r042",title:"Réussir Oral CCF1",matiere:"com",type:"ccf",comp:"ALL",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1rvtyIyEQHdhUkXl1BBToqPbAbMtx_WPn/preview"},
   {id:"r043",title:"Fiche E5 CCF1 2026",matiere:"com",type:"ccf",comp:"ALL",date:"14 mars 2026",driveUrl:"https://docs.google.com/document/d/1_gLPzkEwLvi1jAxMjPyJS5XUUPI3qK1r/preview"}
 ,
-  {id:"r101",title:"FR1 Identifier les besoins en compétences et en personnel",matiere:"mgmt",type:"fiches",comp:"C2.1",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1pWEFZGLWHqWiaeDgtwc8Jbg_2q3dpF5f/preview",htmlKey:"FR1_C2.1"},
-  {id:"r102",title:"FR2 La fiche de poste du technico-commercial",matiere:"mgmt",type:"fiches",comp:"C2.1",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1ZKdjzw7gjamMrIYVy54sWTjS-G7eku5K/preview",htmlKey:"FR2_C2.1"},
-  {id:"r103",title:"FR3 Le processus de recrutement",matiere:"mgmt",type:"fiches",comp:"C2.1",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1GpcrWJF2icbWFLah2XyxDfKsVOp8JPya/preview",htmlKey:"FR3_C2.1"},
-  {id:"r104",title:"FR4 Les leviers de motivation",matiere:"mgmt",type:"fiches",comp:"C2.1",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/18tCk0LAO6ryonerCp8dICB5hZhaAsGBY/preview",htmlKey:"FR4_C2.1"},
-  {id:"r105",title:"FR5 La rémunération des commerciaux",matiere:"mgmt",type:"fiches",comp:"C2.1",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/18U7GZDOXuPoKuYPFEV7ZEoLPtdmRxC-8/preview",htmlKey:"FR5_C2.1"},
-  {id:"r106",title:"FR6 L\'évaluation des performances individuelles",matiere:"mgmt",type:"fiches",comp:"C2.1",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1RGQbNdft6SHLQbnD0LltmhFVnwT-_WSj/preview",htmlKey:"FR6_C2.1"},
-  {id:"r107",title:"FR7 Mobiliser les outils de productivité de l\'équipe commerciale",matiere:"mgmt",type:"fiches",comp:"C2.1",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1xgLz8Z1lal-X2Nbyyg49DfMVcLZ7lItc/preview",htmlKey:"FR7_C2.1"},
+  {id:"r101",title:"FR1 Identifier les besoins en compétences et en personnel",matiere:"mgmt",type:"fiches",comp:"C2.1",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1pWEFZGLWHqWiaeDgtwc8Jbg_2q3dpF5f/preview"},
+  {id:"r102",title:"FR2 La fiche de poste du technico-commercial",matiere:"mgmt",type:"fiches",comp:"C2.1",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1ZKdjzw7gjamMrIYVy54sWTjS-G7eku5K/preview"},
+  {id:"r103",title:"FR3 Le processus de recrutement",matiere:"mgmt",type:"fiches",comp:"C2.1",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1GpcrWJF2icbWFLah2XyxDfKsVOp8JPya/preview"},
+  {id:"r104",title:"FR4 Les leviers de motivation",matiere:"mgmt",type:"fiches",comp:"C2.1",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/18tCk0LAO6ryonerCp8dICB5hZhaAsGBY/preview"},
+  {id:"r105",title:"FR5 La rémunération des commerciaux",matiere:"mgmt",type:"fiches",comp:"C2.1",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/18U7GZDOXuPoKuYPFEV7ZEoLPtdmRxC-8/preview"},
+  {id:"r106",title:"FR6 L\'évaluation des performances individuelles",matiere:"mgmt",type:"fiches",comp:"C2.1",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1RGQbNdft6SHLQbnD0LltmhFVnwT-_WSj/preview"},
+  {id:"r107",title:"FR7 Mobiliser les outils de productivité de l\'équipe commerciale",matiere:"mgmt",type:"fiches",comp:"C2.1",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1xgLz8Z1lal-X2Nbyyg49DfMVcLZ7lItc/preview"},
   {id:"r108",title:"FM1 Élaborer un cahier des charges de formation",matiere:"mgmt",type:"methodes",comp:"C2.1",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1RYnOu2xf8DaOerbJGPi1h-hvYp1CDwBr/preview"},
   {id:"r109",title:"FM2 Conduire un entretien de recrutement ou d\'évaluation annuelle",matiere:"mgmt",type:"methodes",comp:"C2.1",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1ijaJjqKOePFCfhmbW3PinzgIQx4d3xgI/preview"},
   {id:"r110",title:"FM3 Proposer des actions de motivation différenciées",matiere:"mgmt",type:"methodes",comp:"C2.1",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1lJz6KuFfLBsIV45YFh-FyKbwt430sogd/preview"},
-  {id:"r111",title:"FR1 Cartographie du réseau B2B",matiere:"mgmt",type:"fiches",comp:"C2.2",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1b8vEfbIEXZy6DHji3WMkmwndX2UpN9c_/preview",htmlKey:"FR1_C2.2"},
-  {id:"r112",title:"FR2 Les outils d\'animation du réseau",matiere:"mgmt",type:"fiches",comp:"C2.2",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1gl4zAcnLqfP5_Du3txN_IG9LeqrlccCc/preview",htmlKey:"FR2_C2.2"},
-  {id:"r113",title:"FR3 Système d\'information commercial",matiere:"mgmt",type:"fiches",comp:"C2.2",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1nCnQ7mzat3gp2FT12ptKFfAr3KWRooId/preview",htmlKey:"FR3_C2.2"},
-  {id:"r114",title:"FR4 Logistique, politique d\'approvisionnement et supply chain B2B",matiere:"mgmt",type:"fiches",comp:"C2.2",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1zn_LyLqyPjS991A5Jq-AtTLlbh3Jsrig/preview",htmlKey:"FR4_C2.2"},
-  {id:"r115",title:"FR5 Évaluation et pilotage du réseau",matiere:"mgmt",type:"fiches",comp:"C2.2",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1dJwTqI5vjqXg6r7FobYqF1NlUUqIZRc_/preview",htmlKey:"FR5_C2.2"},
-  {id:"r116",title:"FR6 Communication digitale du réseau",matiere:"mgmt",type:"fiches",comp:"C2.2",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1XW3-Ok57xvNPfuNLdg3cTr8YIFt_W6ox/preview",htmlKey:"FR6_C2.2"},
+  {id:"r111",title:"FR1 Cartographie du réseau B2B",matiere:"mgmt",type:"fiches",comp:"C2.2",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1b8vEfbIEXZy6DHji3WMkmwndX2UpN9c_/preview"},
+  {id:"r112",title:"FR2 Les outils d\'animation du réseau",matiere:"mgmt",type:"fiches",comp:"C2.2",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1gl4zAcnLqfP5_Du3txN_IG9LeqrlccCc/preview"},
+  {id:"r113",title:"FR3 Système d\'information commercial",matiere:"mgmt",type:"fiches",comp:"C2.2",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1nCnQ7mzat3gp2FT12ptKFfAr3KWRooId/preview"},
+  {id:"r114",title:"FR4 Logistique, politique d\'approvisionnement et supply chain B2B",matiere:"mgmt",type:"fiches",comp:"C2.2",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1zn_LyLqyPjS991A5Jq-AtTLlbh3Jsrig/preview"},
+  {id:"r115",title:"FR5 Évaluation et pilotage du réseau",matiere:"mgmt",type:"fiches",comp:"C2.2",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1dJwTqI5vjqXg6r7FobYqF1NlUUqIZRc_/preview"},
+  {id:"r116",title:"FR6 Communication digitale du réseau",matiere:"mgmt",type:"fiches",comp:"C2.2",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1XW3-Ok57xvNPfuNLdg3cTr8YIFt_W6ox/preview"},
   {id:"r117",title:"FM1 Concevoir un plan d\'animation réseau et un cahier des charges d\'événement",matiere:"mgmt",type:"methodes",comp:"C2.2",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1RrFXTS-MdRfpXJxuQ9je-qsEjwy-90Dz/preview"},
   {id:"r118",title:"FM2 Cartographier un réseau, gérer et diffuser l\'information",matiere:"mgmt",type:"methodes",comp:"C2.2",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1l_HWMK_QNw0btYca6H_XOfNKbVsfkGhj/preview"},
-  {id:"r119",title:"FR1 Le parcours client B2B",matiere:"mgmt",type:"fiches",comp:"C2.3",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1W_0Vx-nIEvV-i33b4OFftKp8sFMbBET2/preview",htmlKey:"FR1_C2.3"},
-  {id:"r120",title:"FR2 L\'expérience client",matiere:"mgmt",type:"fiches",comp:"C2.3",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1a27TB4aPtmEEVnHojhAxyBEIuCR5VIXj/preview",htmlKey:"FR2_C2.3"},
-  {id:"r121",title:"FR3 Canaux de distribution et stratégies",matiere:"mgmt",type:"fiches",comp:"C2.3",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/14HEfGo4Rbej-wrLltxiHHejxenoSlwHU/preview",htmlKey:"FR3_C2.3"},
-  {id:"r122",title:"FR4 Le marchéage B2B",matiere:"mgmt",type:"fiches",comp:"C2.3",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1pG2QgZE_DV1uhMjB6nOZtfnlx_kCxOtW/preview",htmlKey:"FR4_C2.3"},
-  {id:"r123",title:"FR5 Les indicateurs de l\'expérience client",matiere:"mgmt",type:"fiches",comp:"C2.3",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1fHipN0s2Aawh5sUsuvTOk0Mz62HZ8msr/preview",htmlKey:"FR5_C2.3"},
-  {id:"r124",title:"FR6 Les outils de mesure de l\'expérience client",matiere:"mgmt",type:"fiches",comp:"C2.3",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1GkHFTXEcC1Mk7FAcfQJaxYmbXmoO6VRN/preview",htmlKey:"FR6_C2.3"},
+  {id:"r119",title:"FR1 Le parcours client B2B",matiere:"mgmt",type:"fiches",comp:"C2.3",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1W_0Vx-nIEvV-i33b4OFftKp8sFMbBET2/preview"},
+  {id:"r120",title:"FR2 L\'expérience client",matiere:"mgmt",type:"fiches",comp:"C2.3",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1a27TB4aPtmEEVnHojhAxyBEIuCR5VIXj/preview"},
+  {id:"r121",title:"FR3 Canaux de distribution et stratégies",matiere:"mgmt",type:"fiches",comp:"C2.3",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/14HEfGo4Rbej-wrLltxiHHejxenoSlwHU/preview"},
+  {id:"r122",title:"FR4 Le marchéage B2B",matiere:"mgmt",type:"fiches",comp:"C2.3",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1pG2QgZE_DV1uhMjB6nOZtfnlx_kCxOtW/preview"},
+  {id:"r123",title:"FR5 Les indicateurs de l\'expérience client",matiere:"mgmt",type:"fiches",comp:"C2.3",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1fHipN0s2Aawh5sUsuvTOk0Mz62HZ8msr/preview"},
+  {id:"r124",title:"FR6 Les outils de mesure de l\'expérience client",matiere:"mgmt",type:"fiches",comp:"C2.3",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1GkHFTXEcC1Mk7FAcfQJaxYmbXmoO6VRN/preview"},
   {id:"r125",title:"FM1 Cartographier le parcours client et identifier les points de dissonance",matiere:"mgmt",type:"methodes",comp:"C2.3",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1dmJs2-H4W1gFK2KmVEtISc8Udu75YLcx/preview"},
   {id:"r126",title:"FM2 Optimiser le parcours client et évaluer l\'efficacité des solutions",matiere:"mgmt",type:"methodes",comp:"C2.3",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1owwnxjnguaPhXtSNiypUB8Zd15DlkadQ/preview"},
-  {id:"r127",title:"FR1 Les indicateurs de performance commerciale",matiere:"mgmt",type:"fiches",comp:"C2.4",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1A6DB0a26W4BwxPZgZw8S3Em7GBgOdQe8/preview",htmlKey:"FR1_C2.4"},
-  {id:"r128",title:"FR2 Prix, coûts, marges et structures de coûts",matiere:"mgmt",type:"fiches",comp:"C2.4",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1SV-ZPqU8iHezYZNR9w2-xV-yXFhQh2nD/preview",htmlKey:"FR2_C2.4"},
-  {id:"r129",title:"FR3 Objectifs commerciaux SMART",matiere:"mgmt",type:"fiches",comp:"C2.4",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1EQknPCD-6LFGEgerOBXxrbqFSGs9JW55/preview",htmlKey:"FR3_C2.4"},
-  {id:"r130",title:"FR4 Portefeuille clients",matiere:"mgmt",type:"fiches",comp:"C2.4",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1DozOnmQyQOzg8WzYTh1zp2SALyPJXmVg/preview",htmlKey:"FR4_C2.4"},
-  {id:"r131",title:"FR5 Espaces d\'influence commerciale",matiere:"mgmt",type:"fiches",comp:"C2.4",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1SbdjyksJwv31QPj-M0Br8fuIlDq7uQMb/preview",htmlKey:"FR5_C2.4"},
-  {id:"r132",title:"FR6 Tableaux de bord, outils de planification et méthodes de prévision",matiere:"mgmt",type:"fiches",comp:"C2.4",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1UZ8UZAu8_QMBfDdy1Eq4tECwBvSaHJjJ/preview",htmlKey:"FR6_C2.4"},
-  {id:"r133",title:"FR7 Analyse de la valeur client et performance organisationnelle",matiere:"mgmt",type:"fiches",comp:"C2.4",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/12-GfrCdUflRzFiSKsIL7BLP93oSwii1t/preview",htmlKey:"FR7_C2.4"},
+  {id:"r127",title:"FR1 Les indicateurs de performance commerciale",matiere:"mgmt",type:"fiches",comp:"C2.4",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1A6DB0a26W4BwxPZgZw8S3Em7GBgOdQe8/preview"},
+  {id:"r128",title:"FR2 Prix, coûts, marges et structures de coûts",matiere:"mgmt",type:"fiches",comp:"C2.4",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1SV-ZPqU8iHezYZNR9w2-xV-yXFhQh2nD/preview"},
+  {id:"r129",title:"FR3 Objectifs commerciaux SMART",matiere:"mgmt",type:"fiches",comp:"C2.4",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1EQknPCD-6LFGEgerOBXxrbqFSGs9JW55/preview"},
+  {id:"r130",title:"FR4 Portefeuille clients",matiere:"mgmt",type:"fiches",comp:"C2.4",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1DozOnmQyQOzg8WzYTh1zp2SALyPJXmVg/preview"},
+  {id:"r131",title:"FR5 Espaces d\'influence commerciale",matiere:"mgmt",type:"fiches",comp:"C2.4",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1SbdjyksJwv31QPj-M0Br8fuIlDq7uQMb/preview"},
+  {id:"r132",title:"FR6 Tableaux de bord, outils de planification et méthodes de prévision",matiere:"mgmt",type:"fiches",comp:"C2.4",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1UZ8UZAu8_QMBfDdy1Eq4tECwBvSaHJjJ/preview"},
+  {id:"r133",title:"FR7 Analyse de la valeur client et performance organisationnelle",matiere:"mgmt",type:"fiches",comp:"C2.4",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/12-GfrCdUflRzFiSKsIL7BLP93oSwii1t/preview"}
 ,
-  {id:"r201",title:"FR1 Sources et collecte de l\'information",matiere:"tech",type:"fiches",comp:"C4.1",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1-aTaaSMfN3eW2cBW_3bwAYzOJmDRVWxu/preview",htmlKey:"FR1_C4.1"},
-  {id:"r202",title:"FR2 Classifier, analyser et mettre en forme l\'information",matiere:"tech",type:"fiches",comp:"C4.1",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1kYolhSAP_rbK9JX7k_f-RDR9lEUefVdM/preview",htmlKey:"FR2_C4.1"},
-  {id:"r203",title:"FR3 Diffusion dans le SIC — Procédures et RGPD",matiere:"tech",type:"fiches",comp:"C4.1",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1OvLr73vgbNIyuuNwcH6gulyVSztOQx0W/preview",htmlKey:"FR3_C4.1"},
-  {id:"r204",title:"FR1 Analyser les besoins d\'un segment",matiere:"tech",type:"fiches",comp:"C4.2",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1NUOQ84W9CukrtnVC_U_RQYELAmyUAxSS/preview",htmlKey:"FR1_C4.2"},
-  {id:"r205",title:"FR2 Le cahier des charges fonctionnel",matiere:"tech",type:"fiches",comp:"C4.2",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1emiwKWUI1b7JIMfdzQe5SbjaWVIS1lug/preview",htmlKey:"FR2_C4.2"},
-  {id:"r206",title:"FR3 Paramètres de compétitivité d\'une solution TC",matiere:"tech",type:"fiches",comp:"C4.2",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/10SXp6ihtYy8tAeUdPwH0-h64-sP2Jgao/preview",htmlKey:"FR3_C4.2"},
-  {id:"r207",title:"FR1 Classer et comparer des solutions TC",matiere:"tech",type:"fiches",comp:"C4.3",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1jCINwWIQSxKRAr1g9wWipC-C19NtsTIi/preview",htmlKey:"FR1_C4.3"},
-  {id:"r208",title:"FR2 Construire et valoriser l\'offre globale TC",matiere:"tech",type:"fiches",comp:"C4.3",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1M9Geu2ICOPO4yYA4VXtlEJ3frIsM-3Jf/preview",htmlKey:"FR2_C4.3"},
-  {id:"r209",title:"FR1 Ingénierie pédagogique de la formation technique",matiere:"tech",type:"fiches",comp:"C4.4",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/128lEE3uc6FrLzUKqUXiza4Nrzii1u_id/preview",htmlKey:"FR1_C4.4"},
-  {id:"r210",title:"FR2 Élaborer les supports et animer la formation",matiere:"tech",type:"fiches",comp:"C4.4",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1zB8tM6RoO05VscGamP9la0TxNCuJXMiK/preview",htmlKey:"FR2_C4.4"},
+  {id:"r201",title:"FR1 Sources et collecte de l\'information",matiere:"tech",type:"fiches",comp:"C4.1",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1-aTaaSMfN3eW2cBW_3bwAYzOJmDRVWxu/preview"},
+  {id:"r202",title:"FR2 Classifier, analyser et mettre en forme l\'information",matiere:"tech",type:"fiches",comp:"C4.1",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1kYolhSAP_rbK9JX7k_f-RDR9lEUefVdM/preview"},
+  {id:"r203",title:"FR3 Diffusion dans le SIC — Procédures et RGPD",matiere:"tech",type:"fiches",comp:"C4.1",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1OvLr73vgbNIyuuNwcH6gulyVSztOQx0W/preview"},
+  {id:"r204",title:"FR1 Analyser les besoins d\'un segment",matiere:"tech",type:"fiches",comp:"C4.2",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1NUOQ84W9CukrtnVC_U_RQYELAmyUAxSS/preview"},
+  {id:"r205",title:"FR2 Le cahier des charges fonctionnel",matiere:"tech",type:"fiches",comp:"C4.2",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1emiwKWUI1b7JIMfdzQe5SbjaWVIS1lug/preview"},
+  {id:"r206",title:"FR3 Paramètres de compétitivité d\'une solution TC",matiere:"tech",type:"fiches",comp:"C4.2",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/10SXp6ihtYy8tAeUdPwH0-h64-sP2Jgao/preview"},
+  {id:"r207",title:"FR1 Classer et comparer des solutions TC",matiere:"tech",type:"fiches",comp:"C4.3",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1jCINwWIQSxKRAr1g9wWipC-C19NtsTIi/preview"},
+  {id:"r208",title:"FR2 Construire et valoriser l\'offre globale TC",matiere:"tech",type:"fiches",comp:"C4.3",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1M9Geu2ICOPO4yYA4VXtlEJ3frIsM-3Jf/preview"},
+  {id:"r209",title:"FR1 Ingénierie pédagogique de la formation technique",matiere:"tech",type:"fiches",comp:"C4.4",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/128lEE3uc6FrLzUKqUXiza4Nrzii1u_id/preview"},
+  {id:"r210",title:"FR2 Élaborer les supports et animer la formation",matiere:"tech",type:"fiches",comp:"C4.4",date:"14 mars 2026",driveUrl:"https://drive.google.com/file/d/1zB8tM6RoO05VscGamP9la0TxNCuJXMiK/preview"}
 ];
 
 function storageLoad() {
   let userDocs = [];
   try {
     userDocs = JSON.parse(localStorage.getItem('btsccst:docs') || '[]');
-  } catch(e) { userDocs = []; }
-  // Fusionner : docs statiques + docs ajoutés par l'enseignant
-  // Les docs utilisateur écrasent les statiques si même id
+  } catch(e) { userDocs = []; localStorage.removeItem('btsccst:docs'); }
+  // Toujours priorité aux STATIC_RESOURCES (version fraîche du serveur)
   const staticIds = new Set(STATIC_RESOURCES.map(r=>r.id));
   const userOnly = userDocs.filter(r=>!staticIds.has(r.id));
   resources = [...STATIC_RESOURCES, ...userOnly];
+  // Nettoyer le cache si version obsolète détectée
+  const cached = userDocs.filter(r=>staticIds.has(r.id));
+  if(cached.length > 0){ localStorage.removeItem('btsccst:docs'); }
 }
 
 function storageSave() {
@@ -429,28 +431,23 @@ function updateCounts() {
 }
 
 /* ─── PDF ─── */
-/* ─── DÉTECTION AUTO HTML PREMIUM ───
-   Convention : chaque fiche a un htmlKey (ex: "FR1_C1.2").
-   Si le cache indique que /FR1_C1.2_premium.html existe → ouvert dans un nouvel onglet.
-   Sinon → fallback Google Drive.
-   Pour ajouter une fiche premium : uploader FR1_C1.2_premium.html sur GitHub.
-   Aucune modification de app.js nécessaire.
-─── */
+/* ─── DÉTECTION HTML PREMIUM ─── */
 const _htmlCache = {};
-// Préchargement silencieux au démarrage de la page
 function preloadHtmlCache(){
-  resources.forEach(r=>{
+  resources.forEach(function(r){
     if(!r.htmlKey) return;
-    fetch('/'+r.htmlKey+'_premium.html',{method:'HEAD'})
-      .then(res=>{ _htmlCache[r.htmlKey]=res.ok; })
-      .catch(()=>{ _htmlCache[r.htmlKey]=false; });
+    var key = r.htmlKey;
+    fetch('/'+key+'_premium.html',{method:'HEAD'})
+      .then(function(res){ _htmlCache[key]=res.ok; })
+      .catch(function(){ _htmlCache[key]=false; });
   });
 }
 function openPdf(id){
-  const r=resources.find(x=>x.id===id);
-  if(!r?.driveUrl)return;
+  var r=resources.find(function(x){return x.id===id;});
+  if(!r||!r.driveUrl)return;
   if(r.htmlKey && _htmlCache[r.htmlKey]===true){
-    window.open('/'+r.htmlKey+'_premium.html','_blank'); return;
+    window.open('/'+r.htmlKey+'_premium.html','_blank');
+    return;
   }
   document.getElementById('pdfTitle').textContent=r.title;
   document.getElementById('pdfFrame').src=r.driveUrl;
