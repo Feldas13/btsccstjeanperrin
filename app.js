@@ -431,26 +431,26 @@ function updateCounts() {
 /* ─── PDF ─── */
 /* ─── DÉTECTION AUTO HTML PREMIUM ───
    Convention : chaque fiche a un htmlKey (ex: "FR1_C1.2").
-   Si /FR1_C1.2_premium.html existe sur le site → ouvert dans un nouvel onglet.
+   Si le cache indique que /FR1_C1.2_premium.html existe → ouvert dans un nouvel onglet.
    Sinon → fallback Google Drive.
    Pour ajouter une fiche premium : uploader FR1_C1.2_premium.html sur GitHub.
    Aucune modification de app.js nécessaire.
 ─── */
 const _htmlCache = {};
-async function checkHtml(key){
-  if(key in _htmlCache) return _htmlCache[key];
-  try {
-    const res = await fetch('/'+key+'_premium.html', {method:'HEAD'});
-    _htmlCache[key] = res.ok;
-    return res.ok;
-  } catch(e){ _htmlCache[key]=false; return false; }
+// Préchargement silencieux au démarrage de la page
+function preloadHtmlCache(){
+  resources.forEach(r=>{
+    if(!r.htmlKey) return;
+    fetch('/'+r.htmlKey+'_premium.html',{method:'HEAD'})
+      .then(res=>{ _htmlCache[r.htmlKey]=res.ok; })
+      .catch(()=>{ _htmlCache[r.htmlKey]=false; });
+  });
 }
-async function openPdf(id){
+function openPdf(id){
   const r=resources.find(x=>x.id===id);
   if(!r?.driveUrl)return;
-  if(r.htmlKey){
-    const hasHtml = await checkHtml(r.htmlKey);
-    if(hasHtml){ window.open('/'+r.htmlKey+'_premium.html','_blank'); return; }
+  if(r.htmlKey && _htmlCache[r.htmlKey]===true){
+    window.open('/'+r.htmlKey+'_premium.html','_blank'); return;
   }
   document.getElementById('pdfTitle').textContent=r.title;
   document.getElementById('pdfFrame').src=r.driveUrl;
@@ -548,4 +548,5 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('app-home').style.display = 'block';
   document.getElementById('app-mat').style.display  = 'none';
   state.section = 'home';
+  preloadHtmlCache();
 });
