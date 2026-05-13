@@ -1,0 +1,46 @@
+{
+  "name": "BTS CCST — Espace Ressources",
+  "short_name": "BTS CCST",
+  "description": "Fiches ressources, cas pratiques et documents CCF — Lycée Jean Perrin Marseille",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1a1a1a",
+  "theme_color": "#1a1a1a",
+  "orientation": "portrait-primary",
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education"],
+  "shortcuts": [
+    {
+      "name": "Conception & Négociation",
+      "short_name": "Bloc 1",
+      "url": "/?section=com",
+      "description": "Fiches ressources Bloc 1"
+    },
+    {
+      "name": "Management",
+      "short_name": "Bloc 2",
+      "url": "/?section=mgmt",
+      "description": "Fiches ressources Bloc 2"
+    },
+    {
+      "name": "Expertise TC",
+      "short_name": "Bloc 4",
+      "url": "/?section=tech",
+      "description": "Fiches ressources Bloc 4"
+    }
+  ]
+}

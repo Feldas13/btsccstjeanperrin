@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#1a1a1a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="BTS CCST">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>BTS CCST — Espace Ressources — Lycée Jean Perrin</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#f7f7f5;color:#1a1a1a;font-size:15px}
+
+/* TOP BAR */
+.topbar{background:#1a1a1a;color:rgba(255,255,255,.6);font-size:.72rem;padding:8px 56px;display:flex;align-items:center;justify-content:space-between}
+.topbar-l{display:flex;gap:20px;align-items:center}
+.topbar-r{display:flex;gap:14px;align-items:center}
+.topbar a{color:rgba(255,255,255,.5);text-decoration:none;transition:color .15s}
+.topbar a:hover{color:white}
+.tsep{width:1px;height:12px;background:rgba(255,255,255,.2)}
+
+/* NAVBAR */
+.navbar{background:white;border-bottom:1px solid #e5e5e5;padding:0 48px;display:flex;align-items:stretch;justify-content:space-between;position:sticky;top:0;z-index:200;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.nb-brand{display:flex;align-items:center;gap:12px;cursor:pointer;padding:12px 0;text-decoration:none;flex-shrink:0}
+.nb-logo{width:32px;height:32px;background:#1d4e89;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.nb-logo svg{width:18px;height:18px;stroke:white}
+.nb-title{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;color:#1a1a1a;display:block}
+.nb-sub{font-size:.65rem;color:#999;display:block}
+.nb-menu{display:flex;align-items:stretch;gap:4px}
+.nb-home{padding:0 16px;height:100%;display:flex;align-items:center;font-size:.79rem;font-weight:500;color:#555;border:none;background:none;font-family:'Inter',sans-serif;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;transition:color .15s}
+.nb-home:hover{color:#1a1a1a;border-bottom-color:#1a1a1a}
+.nb-item{position:relative;display:flex;align-items:center}
+.nb-link{padding:0 14px;height:100%;display:flex;align-items:center;font-size:.79rem;font-weight:500;color:#555;border:none;background:none;font-family:'Inter',sans-serif;cursor:pointer;border-bottom:3px solid transparent;gap:5px;white-space:nowrap;transition:color .15s}
+.nb-link:hover,.nb-link.active{color:#1a1a1a;border-bottom-color:#1a1a1a}
+.nb-link svg{width:11px;height:11px;transition:transform .2s;flex-shrink:0}
+.nb-item.open .nb-link svg{transform:rotate(180deg)}
+.nb-item.open .nb-link{color:#1a1a1a;border-bottom-color:#1a1a1a}
+.nb-right{display:flex;align-items:center;padding:12px 0 12px 18px;border-left:1px solid #e5e5e5;margin-left:auto;flex-shrink:0}
+.btn-add{background:#1a1a1a;color:white;border:none;border-radius:4px;padding:8px 14px;font-size:.78rem;font-weight:500;cursor:pointer;display:flex;align-items:center;gap:7px;font-family:'Inter',sans-serif;transition:background .15s;white-space:nowrap}
+.btn-add:hover{background:#333}
+.btn-add svg{width:13px;height:13px}
+
+/* MEGA MENU */
+.mega{position:absolute;top:100%;left:0;background:white;border:1px solid #e5e5e5;border-top:3px solid #1a1a1a;min-width:480px;box-shadow:0 8px 30px rgba(0,0,0,.12);opacity:0;pointer-events:none;transform:translateY(-6px);transition:all .2s;z-index:300;display:grid;grid-template-columns:1fr 1fr;gap:0}
+.nb-item.open .mega{opacity:1;pointer-events:all;transform:translateY(0)}
+.mega-col{padding:14px 0;border-right:1px solid #f0f0f0}
+.mega-col:last-child{border-right:none}
+.mega-head{padding:7px 18px 5px;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#aaa}
+.mega-item{padding:8px 18px;display:flex;align-items:center;gap:10px;cursor:pointer;transition:background .15s}
+.mega-item:hover{background:#f7f7f5}
+.mega-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.mega-label{font-size:.81rem;font-weight:500;color:#1a1a1a}
+.mega-code{font-size:.7rem;color:#999;margin-top:1px}
+.mega-sep{height:1px;background:#f0f0f0;margin:6px 18px}
+
+/* HERO */
+.hero{position:relative;height:78vh;min-height:480px;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#0a0a0a 0%,#1d4e89 50%,#0d2a4a 100%);z-index:0}
+.hero-bg::after{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=80') center/cover;opacity:.12}
+.hero-content{position:relative;z-index:1;max-width:700px;padding:0 56px}
+.hero-ey{font-size:.7rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:20px}
+.hero-title{font-family:'Playfair Display',serif;font-size:3.8rem;font-weight:700;color:white;line-height:1.08;margin-bottom:22px}
+.hero-desc{font-size:.92rem;color:rgba(255,255,255,.65);line-height:1.75;margin-bottom:34px;max-width:480px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.btn-hp{background:white;color:#1a1a1a;border:none;border-radius:3px;padding:13px 28px;font-size:.84rem;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s}
+.btn-hp:hover{background:#f0f0f0;transform:translateY(-1px)}
+.btn-ho{background:transparent;color:white;border:1px solid rgba(255,255,255,.4);border-radius:3px;padding:13px 28px;font-size:.84rem;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s}
+.btn-ho:hover{border-color:white;background:rgba(255,255,255,.08)}
+
+/* HERO STRIP */
+.hero-strip{background:rgba(0,0,0,.6);backdrop-filter:blur(10px);display:flex;padding:0 56px}
+.strip-item{padding:18px 32px 18px 0;display:flex;flex-direction:column;gap:3px;border-right:1px solid rgba(255,255,255,.1);margin-right:32px}
+.strip-item:last-child{border-right:none}
+.strip-num{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:white}
+.strip-label{font-size:.68rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.45)}
+
+/* HOME GRID */
+.home-grid{display:grid;grid-template-columns:1fr 1fr 1fr;background:white;border-bottom:1px solid #e5e5e5}
+.home-card{padding:34px 30px;border-right:1px solid #e5e5e5;cursor:pointer;transition:background .2s;position:relative}
+.home-card:last-child{border-right:none}
+.home-card:hover{background:#f7f7f5}
+.hc-bar{height:4px;width:40px;border-radius:2px;margin-bottom:18px}
+.com .hc-bar{background:#1d4e89}.mgmt .hc-bar{background:#9c3012}.tech .hc-bar{background:#145a45}
+.hc-em{font-size:1.7rem;margin-bottom:11px}
+.hc-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:8px;line-height:1.25}
+.hc-desc{font-size:.78rem;color:#666;line-height:1.65;margin-bottom:18px}
+.hc-count{font-size:.71rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.com .hc-count{color:#1d4e89}.mgmt .hc-count{color:#9c3012}.tech .hc-count{color:#145a45}
+.hc-arr{position:absolute;bottom:20px;right:20px;color:#ccc;font-size:1rem;transition:all .2s}
+.home-card:hover .hc-arr{color:#1a1a1a;transform:translateX(3px)}
+
+/* ABOUT SECTION */
+.about-section{background:#1a1a1a;padding:56px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.about-eyebrow{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.about-eyebrow::before{content:'';display:block;width:20px;height:1px;background:rgba(255,255,255,.3)}
+.about-title{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:white;line-height:1.2;margin-bottom:16px}
+.about-desc{font-size:.83rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:28px}
+.about-right{display:flex;flex-direction:column;gap:20px}
+.about-bloc{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:22px 24px}
+.about-bloc-link{cursor:pointer;transition:all .2s}
+.about-bloc-link:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2);transform:translateY(-2px)}
+.bloc-arrow{opacity:0;transition:opacity .2s;margin-left:8px}
+.about-bloc-link:hover .bloc-arrow{opacity:1}
+.about-bloc-title{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:600;color:white;margin-bottom:10px;display:flex;align-items:center;gap:9px}
+.about-bloc-text{font-size:.79rem;color:rgba(255,255,255,.55);line-height:1.7}
+
+/* GE SECTION */
+.ge-section{background:linear-gradient(135deg,#0d1f3c 0%,#1a1a2e 60%,#0d1f3c 100%);padding:72px 56px}
+.ge-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;max-width:1200px;margin:0 auto}
+.ge-eyebrow{font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.ge-eyebrow::before{content:'';display:block;width:16px;height:1px;background:rgba(255,255,255,.3)}
+.ge-title{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:white;line-height:1.2;margin-bottom:18px}
+.ge-text{font-size:.83rem;color:rgba(255,255,255,.55);line-height:1.85;margin-bottom:28px}
+.ge-steps{display:flex;gap:0;margin-top:8px}
+.ge-step{flex:1;padding:16px 20px 16px 0;border-right:1px solid rgba(255,255,255,.08)}
+.ge-step:last-child{border-right:none;padding-right:0;padding-left:20px}
+.ge-step-num{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:rgba(255,255,255,.15);margin-bottom:8px}
+.ge-step-title{font-size:.78rem;font-weight:600;color:white;margin-bottom:4px}
+.ge-step-sub{font-size:.72rem;color:rgba(255,255,255,.4)}
+.ge-card-title{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:rgba(255,255,255,.35);margin-bottom:14px}
+.ge-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:8px;padding:18px 20px;display:flex;gap:14px;align-items:flex-start;margin-bottom:10px;transition:background .2s}
+.ge-card:hover{background:rgba(255,255,255,.09)}
+.ge-card-icon{font-size:1.3rem;flex-shrink:0;margin-top:1px}
+.ge-card-h{font-size:.82rem;font-weight:600;color:white;margin-bottom:5px}
+.ge-card-p{font-size:.77rem;color:rgba(255,255,255,.55);line-height:1.65}
+
+/* PERRIN SECTION */
+.perrin-section{background:#f7f7f5;padding:72px 56px}
+.perrin-inner{max-width:1200px;margin:0 auto}
+.perrin-header{text-align:center;margin-bottom:48px}
+.perrin-eyebrow{font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#999;margin-bottom:12px}
+.perrin-title{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:#1a1a1a;margin-bottom:12px}
+.perrin-sub{font-size:.83rem;color:#888;line-height:1.7;max-width:600px;margin:0 auto}
+.perrin-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-bottom:40px}
+.perrin-card{background:white;border:1px solid #e8e8e8;border-radius:8px;padding:26px 24px;transition:all .2s;box-shadow:0 1px 6px rgba(0,0,0,.05)}
+.perrin-card:hover{box-shadow:0 8px 28px rgba(0,0,0,.1);transform:translateY(-3px)}
+.perrin-icon{font-size:1.8rem;margin-bottom:13px}
+.perrin-card-title{font-family:'Playfair Display',serif;font-size:.98rem;font-weight:700;color:#1a1a1a;margin-bottom:10px;line-height:1.25}
+.perrin-card-text{font-size:.8rem;color:#666;line-height:1.7}
+.perrin-card-text strong{color:#1a1a1a}
+.perrin-address{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;font-size:.8rem;color:#888;background:white;border:1px solid #e8e8e8;border-radius:6px;padding:16px 24px;margin-top:8px}
+.pa-sep{color:#ddd}
+
+/* FOOTER */
+footer{background:#111;color:rgba(255,255,255,.4);padding:32px 56px;display:flex;align-items:center;justify-content:space-between;font-size:.76rem}
+footer strong{color:rgba(255,255,255,.75)}
+footer a{color:rgba(255,255,255,.4);text-decoration:none}
+footer a:hover{color:rgba(255,255,255,.8)}
+
+/* PAGE SECTIONS */
+#app-home{display:block}
+#app-mat{display:none}
+.mat-section{display:none}
+
+/* SECTION MATIÈRE */
+.mat-hero{position:relative;height:160px;display:flex;align-items:flex-end;overflow:hidden}
+.mat-hero-bg{position:absolute;inset:0}
+.bg-com{background:linear-gradient(135deg,#0d2a4a,#1d4e89)}
+.bg-mgmt{background:linear-gradient(135deg,#4a0d0d,#9c3012)}
+.bg-tech{background:linear-gradient(135deg,#0a2e1e,#145a45)}
+.mat-hero-content{position:relative;z-index:1;padding:24px 32px}
+.mat-hero-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:white}
+.mat-hero-sub{font-size:.72rem;color:rgba(255,255,255,.55);margin-top:4px}
+.breadcrumb{display:flex;align-items:center;gap:8px;padding:12px 24px;background:white;border-bottom:1px solid #f0f0f0;font-size:.77rem}
+.bc-link{background:none;border:none;color:#888;cursor:pointer;font-family:'Inter',sans-serif;font-size:.77rem;padding:0}
+.bc-link:hover{color:#1a1a1a}
+.bc-sep{color:#ccc}
+.bc-cur{color:#1a1a1a;font-weight:500}
+.type-tabs{display:flex;gap:6px;padding:12px 24px;background:white;border-bottom:1px solid #e5e5e5;overflow-x:auto}
+.type-tab{padding:8px 16px;border:1px solid #e5e5e5;border-radius:4px;background:white;font-size:.76rem;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap;transition:all .15s;color:#666}
+.type-tab.active,.type-tab:hover{background:#1a1a1a;color:white;border-color:#1a1a1a}
+
+/* BODY MATIÈRE */
+.mat-body{display:flex;gap:0;min-height:60vh;background:#f7f7f5}
+.comp-sidebar{width:220px;min-width:220px;background:white;border-right:1px solid #e5e5e5;padding:16px 0;flex-shrink:0}
+.comp-sidebar-head{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#bbb;padding:8px 18px 12px;border-bottom:1px solid #f0f0f0;margin-bottom:6px}
+.comp-btn{display:flex;flex-direction:column;gap:2px;padding:10px 18px;cursor:pointer;border:none;background:none;font-family:'Inter',sans-serif;text-align:left;width:100%;transition:background .15s;border-left:3px solid transparent}
+.comp-btn:hover{background:#f7f7f5}
+.comp-btn.active{background:#f0f5ff;border-left-color:#1d4e89}
+.mgmt .comp-btn.active{background:#fff5f0;border-left-color:#9c3012}
+.tech .comp-btn.active{background:#f0fff8;border-left-color:#145a45}
+.comp-code{font-size:.7rem;font-weight:700;color:#1d4e89}
+.mgmt .comp-code{color:#9c3012}
+.tech .comp-code{color:#145a45}
+.comp-label{font-size:.74rem;color:#555;line-height:1.35}
+.comp-content{flex:1;padding:24px}
+.comp-content-header{border-radius:8px;padding:20px 24px;margin-bottom:20px}
+.comp-content-header.com{background:linear-gradient(135deg,#e8f0fb,#f0f5ff)}
+.comp-content-header.mgmt{background:linear-gradient(135deg,#fde8e8,#fff0ed)}
+.comp-content-header.tech{background:linear-gradient(135deg,#e8f5ee,#f0fff8)}
+.cch-badge{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border-radius:3px;margin-bottom:10px;background:rgba(0,0,0,.06)}
+.cch-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:#1a1a1a;margin-bottom:8px}
+.cch-desc{font-size:.8rem;color:#666;line-height:1.7;margin-bottom:12px}
+.cch-divider{height:1px;background:rgba(0,0,0,.06)}
+
+/* CARDS */
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;padding:4px 0}
+.doc-card{background:white;border:1px solid #e8e8e8;border-radius:8px;overflow:hidden;transition:all .2s;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.doc-card:hover{box-shadow:0 6px 20px rgba(0,0,0,.1);transform:translateY(-2px)}
+.dc-top{height:4px}
+.com-bar{background:#1d4e89}.mgmt-bar{background:#9c3012}.tech-bar{background:#145a45}
+.dc-body{padding:16px}
+.dc-tag{display:inline-block;font-size:.63rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:3px 8px;border-radius:3px;margin-bottom:10px}
+.com-tag{background:#e8f0fb;color:#1d4e89}
+.mgmt-tag{background:#fde8e8;color:#9c3012}
+.tech-tag{background:#e8f5ee;color:#145a45}
+.dc-title{font-size:.84rem;font-weight:600;color:#1a1a1a;line-height:1.4;margin-bottom:8px}
+.dc-desc{font-size:.75rem;color:#888;line-height:1.5;margin-bottom:8px}
+.dc-meta{display:flex;align-items:center;gap:5px;font-size:.71rem;color:#bbb;margin-bottom:12px}
+.dc-meta svg{width:12px;height:12px;flex-shrink:0}
+.dc-foot{display:flex;gap:6px}
+.btn-c{flex:1;background:#1a1a1a;color:white;border:none;border-radius:4px;padding:7px 10px;font-size:.72rem;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;display:flex;align-items:center;justify-content:center;gap:5px;transition:background .15s}
+.btn-c:hover{background:#333}
+.btn-d{background:white;color:#666;border:1px solid #e5e5e5;border-radius:4px;padding:7px 10px;font-size:.72rem;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s}
+.btn-d:hover{background:#f7f7f5;border-color:#ccc}
+.add-card{background:white;border:2px dashed #e0e0e0;border-radius:8px;padding:28px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;cursor:pointer;transition:all .2s;color:#bbb;font-size:.78rem;font-weight:500;min-height:120px}
+.add-card:hover{border-color:#1d4e89;color:#1d4e89;background:#f0f5ff}
+.add-icon{font-size:1.4rem}
+
+/* MODAL */
+.overlay{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s}
+.overlay.open{opacity:1;pointer-events:all}
+.modal{background:white;border-radius:10px;padding:28px 32px;width:520px;max-width:95vw;max-height:90vh;overflow-y:auto;transform:translateY(16px);transition:transform .2s;box-shadow:0 20px 60px rgba(0,0,0,.2)}
+.overlay.open .modal{transform:translateY(0)}
+.modal-head h2{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;margin-bottom:4px}
+.modal-sub{font-size:.78rem;color:#888;margin-bottom:20px}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:.75rem;font-weight:600;color:#555;margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em}
+.field input,.field select,.field textarea{width:100%;border:1px solid #e0e0e0;border-radius:5px;padding:10px 12px;font-size:.84rem;font-family:'Inter',sans-serif;color:#1a1a1a;outline:none;transition:border-color .15s}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:#1d4e89}
+.field textarea{height:70px;resize:vertical}
+.modal-foot{display:flex;gap:10px;justify-content:flex-end;margin-top:20px;padding-top:16px;border-top:1px solid #f0f0f0}
+.btn-cancel{background:white;color:#666;border:1px solid #e0e0e0;border-radius:5px;padding:9px 20px;font-size:.82rem;cursor:pointer;font-family:'Inter',sans-serif}
+.btn-confirm{background:#1a1a1a;color:white;border:none;border-radius:5px;padding:9px 20px;font-size:.82rem;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif}
+.btn-confirm:hover{background:#333}
+
+/* PDF VIEWER */
+.pdf-overlay{position:fixed;inset:0;z-index:600;background:rgba(0,0,0,.97);display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .2s}
+.pdf-overlay.open{opacity:1;pointer-events:all}
+.pdf-header{display:flex;align-items:center;gap:16px;padding:14px 20px;background:rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.08);flex-shrink:0}
+.btn-pclose{background:rgba(255,255,255,.1);color:white;border:none;border-radius:4px;padding:8px 14px;font-size:.8rem;cursor:pointer;font-family:'Inter',sans-serif}
+.btn-pclose:hover{background:rgba(255,255,255,.2)}
+.pdf-title{color:white;font-size:.88rem;font-weight:500}
+.pdf-frame{flex:1;border:none;width:100%}
+
+/* TOAST */
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);background:#1a1a1a;color:white;border-radius:6px;padding:12px 20px;font-size:.8rem;display:flex;align-items:center;gap:10px;opacity:0;pointer-events:none;transition:all .3s;z-index:700;box-shadow:0 8px 30px rgba(0,0,0,.2)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast-dot{width:7px;height:7px;border-radius:50%;background:#4ade80;flex-shrink:0}
+
+/* RESPONSIVE TABLETTE */
+@media(max-width:1024px){
+  .topbar{display:none}
+  .navbar{padding:0 20px}
+  .nb-menu{gap:0}
+  .nb-link{padding:0 10px;font-size:.75rem}
+  .hero-content{padding:0 24px}
+  .hero-title{font-size:2.6rem}
+  .home-grid{grid-template-columns:1fr}
+  .home-card{border-right:none;border-bottom:1px solid #e5e5e5}
+  .home-card:last-child{border-bottom:none}
+  .about-section{grid-template-columns:1fr;padding:40px 24px;gap:32px}
+  .ge-inner{grid-template-columns:1fr}
+  .ge-section{padding:48px 24px}
+  .perrin-grid{grid-template-columns:1fr 1fr}
+  .perrin-section{padding:48px 24px}
+  .comp-sidebar{width:200px;min-width:180px}
+  .cards-grid{grid-template-columns:1fr 1fr}
+}
+
+/* RESPONSIVE MOBILE */
+@media(max-width:640px){
+  .navbar{padding:0 12px}
+  .nb-title{font-size:.85rem}
+  .nb-sub{display:none}
+  .nb-menu{width:100%;overflow-x:auto;padding-bottom:2px;scrollbar-width:none;border-top:1px solid #f0f0f0}
+  .nb-menu::-webkit-scrollbar{display:none}
+  .nb-home,.nb-link{padding:10px 10px;font-size:.72rem;white-space:nowrap}
+  .nb-item{flex-shrink:0}
+  .mega{position:fixed;top:0;left:0;right:0;bottom:0;min-width:unset;width:100%;border-radius:0;border:none;z-index:999;overflow-y:auto;grid-template-columns:1fr}
+  .mega-col{border-right:none!important;border-bottom:1px solid #f0f0f0}
+  .hero{height:auto;min-height:60vh;padding:80px 0 40px}
+  .hero-content{padding:0 20px}
+  .hero-title{font-size:2rem}
+  .hero-actions{flex-direction:column;gap:10px}
+  .btn-hp,.btn-ho{width:100%;text-align:center}
+  .hero-strip{flex-wrap:wrap;padding:0}
+  .strip-item{flex:1;min-width:33%;padding:16px 8px;text-align:center}
+  .home-grid{grid-template-columns:1fr}
+  .about-section{grid-template-columns:1fr;padding:32px 20px;gap:24px}
+  .ge-section{padding:40px 20px}
+  .ge-inner{grid-template-columns:1fr;gap:32px}
+  .ge-title{font-size:1.6rem}
+  .ge-steps{flex-direction:column}
+  .perrin-section{padding:40px 20px}
+  .perrin-grid{grid-template-columns:1fr}
+  .mat-hero{height:120px}
+  .mat-hero-title{font-size:1rem}
+  .breadcrumb{padding:10px 16px;font-size:.75rem}
+  .type-tabs{padding:0 12px;gap:4px}
+  .type-tab{font-size:.7rem;padding:8px 10px}
+  .mat-body{flex-direction:column!important}
+  .comp-sidebar{width:100%!important;min-width:unset;border-right:none;border-bottom:2px solid #e5e5e5;display:flex;overflow-x:auto;gap:6px;padding:10px 12px;scrollbar-width:none}
+  .comp-sidebar::-webkit-scrollbar{display:none}
+  .comp-sidebar-head{display:none}
+  .comp-btn{flex-direction:row;gap:6px;padding:8px 12px;white-space:nowrap;flex-shrink:0;border-radius:20px;border-left:none!important}
+  .comp-btn.active{background:#1a1a1a;color:white}
+  .comp-btn.active .comp-code,.comp-btn.active .comp-label{color:white}
+  .cards-grid{grid-template-columns:1fr;gap:12px;padding:16px}
+  .comp-content{padding:0}
+  .comp-content-header{margin:12px;border-radius:8px;padding:16px}
+  footer{flex-direction:column;gap:10px;text-align:center;padding:24px 20px;font-size:.72rem}
+}
+
+/* BOUTON RETOUR MOBILE */
+.bc-back{
+  display:none;
+  background:#1a1a1a;color:white;border:none;border-radius:5px;
+  padding:7px 14px;font-size:.78rem;font-weight:600;cursor:pointer;
+  font-family:'Inter',sans-serif;margin-right:8px;
+}
+.bc-back:hover{background:#333}
+@media(max-width:1024px){
+  .bc-back{display:inline-flex;align-items:center;gap:5px}
+}
+
+
+/* BOUTON RETOUR FLOTTANT MOBILE */
+.fab-back{
+  display:none;
+  position:fixed;bottom:24px;left:16px;z-index:400;
+  background:#1a1a1a;color:white;border:none;border-radius:50px;
+  padding:12px 20px;font-size:.82rem;font-weight:600;
+  font-family:'Inter',sans-serif;cursor:pointer;
+  box-shadow:0 4px 16px rgba(0,0,0,.3);
+  align-items:center;gap:8px;
+}
+.fab-back:active{transform:scale(.95)}
+@media(max-width:640px){
+  #app-mat .fab-back{display:flex}
+}
+
+
+/* BOUTON FERMER MEGA MENU MOBILE */
+.mega-close {
+  display: none;
+}
+@media(max-width:640px){
+  .mega-close {
+    display: block;
+    width: 100%;
+    background: #1a1a1a;
+    color: white;
+    border: none;
+    padding: 16px 20px;
+    font-size: .88rem;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    text-align: left;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    /* Span toute la largeur même en grid 1 col */
+    grid-column: 1 / -1;
+  }
+  /* Le mega en plein écran doit avoir le bouton en premier */
+  .nb-item.open .mega {
+    display: flex;
+    flex-direction: column;
+  }
+  .nb-item.open .mega .mega-close {
+    order: -1;
+    flex-shrink: 0;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-l">
+    <span>Lycée Jean Perrin — Marseille</span>
+    <div class="tsep"></div>
+    <span>BTS Conseil et Commercialisation de Solutions Techniques</span>
+  </div>
+  <div class="topbar-r">
+    <a href="https://www.site.ac-aix-marseille.fr/lyc-perrin/spip/" target="_blank">Lycée Jean Perrin</a>
+    <div class="tsep"></div>
+    <a href="https://www.atrium-sud.fr/" target="_blank">Atrium</a>
+    <div class="tsep"></div>
+    <a href="mailto:btsccst.jeanperrin@gmail.com">Contact</a>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nb-brand" onclick="showHome()">
+    <div class="nb-logo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+    </div>
+    <div>
+      <span class="nb-title">Espace Ressources</span>
+      <span class="nb-sub">BTS CCST — Jean Perrin</span>
+    </div>
+  </div>
+  <div class="nb-menu">
+    <button class="nb-home" onclick="showHome()">Accueil</button>
+    <div class="nb-item">
+      <button class="nb-link" onclick="toggleMenu(this)">
+        Conception &amp; Négociation
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="mega">
+        <button class="mega-close" onclick="closeAllMenus()">✕ Fermer</button>
+        <div class="mega-col">
+          <div class="mega-head">📋 Fiches ressources</div>
+          <div class="mega-item" onclick="showSection('com','fiches','C1.1')"><div class="mega-dot" style="background:#1d4e89"></div><div><div class="mega-label">Préparer une négociation</div><div class="mega-code">C1.1</div></div></div>
+          <div class="mega-item" onclick="showSection('com','fiches','C1.2')"><div class="mega-dot" style="background:#1d4e89"></div><div><div class="mega-label">Conseiller et prescrire</div><div class="mega-code">C1.2</div></div></div>
+          <div class="mega-item" onclick="showSection('com','fiches','C1.3')"><div class="mega-dot" style="background:#1d4e89"></div><div><div class="mega-label">Gérer le risque affaire</div><div class="mega-code">C1.3</div></div></div>
+          <div class="mega-item" onclick="showSection('com','fiches','C1.4')"><div class="mega-dot" style="background:#1d4e89"></div><div><div class="mega-label">Entretien de vente</div><div class="mega-code">C1.4</div></div></div>
+          <div class="mega-item" onclick="showSection('com','fiches','C1.5')"><div class="mega-dot" style="background:#1d4e89"></div><div><div class="mega-label">Suivi d'une affaire</div><div class="mega-code">C1.5</div></div></div>
+        </div>
+        <div class="mega-col">
+          <div class="mega-head">✏️ TD</div>
+          <div class="mega-item" onclick="showSection('com','td','C1.1')"><div class="mega-dot" style="background:#1d4e89"></div><div><div class="mega-label">TD par compétence</div><div class="mega-code">C1.1 → C1.5</div></div></div>
+          <div class="mega-sep"></div>
+          <div class="mega-head">🎯 Fiches Scoring</div>
+          <div class="mega-item" onclick="showSection('com','scoring','ALL')"><div class="mega-dot" style="background:#1d4e89"></div><div><div class="mega-label">Fiches Scoring</div><div class="mega-code">Bloc 1</div></div></div>
+          <div class="mega-sep"></div>
+          <div class="mega-head">🧩 Cas pratiques</div>
+          <div class="mega-item" onclick="showSection('com','cas','ALL')"><div class="mega-dot" style="background:#1d4e89"></div><div><div class="mega-label">Cas pratiques</div><div class="mega-code">Bloc 1</div></div></div>
+          <div class="mega-sep"></div>
+          <div class="mega-head">📁 CCF</div>
+          <div class="mega-item" onclick="showSection('com','ccf','ALL')"><div class="mega-dot" style="background:#1d4e89"></div><div><div class="mega-label">Documents CCF</div><div class="mega-code">Évaluation</div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="nb-item">
+      <button class="nb-link" onclick="toggleMenu(this)">
+        Management
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="mega">
+        <button class="mega-close" onclick="closeAllMenus()">✕ Fermer</button>
+        <div class="mega-col">
+          <div class="mega-head">📋 Fiches ressources</div>
+          <div class="mega-item" onclick="showSection('mgmt','fiches','C2.1')"><div class="mega-dot" style="background:#9c3012"></div><div><div class="mega-label">Recruter et former</div><div class="mega-code">C2.1</div></div></div>
+          <div class="mega-item" onclick="showSection('mgmt','fiches','C2.2')"><div class="mega-dot" style="background:#9c3012"></div><div><div class="mega-label">Animer un réseau</div><div class="mega-code">C2.2</div></div></div>
+          <div class="mega-item" onclick="showSection('mgmt','fiches','C2.3')"><div class="mega-dot" style="background:#9c3012"></div><div><div class="mega-label">Parcours client</div><div class="mega-code">C2.3</div></div></div>
+          <div class="mega-item" onclick="showSection('mgmt','fiches','C2.4')"><div class="mega-dot" style="background:#9c3012"></div><div><div class="mega-label">Performance commerciale</div><div class="mega-code">C2.4</div></div></div>
+        </div>
+        <div class="mega-col">
+          <div class="mega-head">📐 Fiches Méthodes</div>
+          <div class="mega-item" onclick="showSection('mgmt','methodes','C2.1')"><div class="mega-dot" style="background:#9c3012"></div><div><div class="mega-label">Méthodes par compétence</div><div class="mega-code">C2.1 → C2.4</div></div></div>
+          <div class="mega-sep"></div>
+          <div class="mega-head">🔁 Révisions</div>
+          <div class="mega-item" onclick="showSection('mgmt','revision','ALL')"><div class="mega-dot" style="background:#9c3012"></div><div><div class="mega-label">Documents de révision</div><div class="mega-code">Bloc 2</div></div></div>
+          <div class="mega-sep"></div>
+          <div class="mega-head">🧩 Cas pratiques</div>
+          <div class="mega-item" onclick="showSection('mgmt','cas','ALL')"><div class="mega-dot" style="background:#9c3012"></div><div><div class="mega-label">Cas pratiques</div><div class="mega-code">Bloc 2</div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="nb-item">
+      <button class="nb-link" onclick="toggleMenu(this)">
+        Expertise TC
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="mega">
+        <button class="mega-close" onclick="closeAllMenus()">✕ Fermer</button>
+        <div class="mega-col">
+          <div class="mega-head">📋 Fiches ressources</div>
+          <div class="mega-item" onclick="showSection('tech','fiches','C4.1')"><div class="mega-dot" style="background:#145a45"></div><div><div class="mega-label">Veille concurrentielle</div><div class="mega-code">C4.1</div></div></div>
+          <div class="mega-item" onclick="showSection('tech','fiches','C4.2')"><div class="mega-dot" style="background:#145a45"></div><div><div class="mega-label">Analyser les besoins</div><div class="mega-code">C4.2</div></div></div>
+          <div class="mega-item" onclick="showSection('tech','fiches','C4.3')"><div class="mega-dot" style="background:#145a45"></div><div><div class="mega-label">Produire des solutions TC</div><div class="mega-code">C4.3</div></div></div>
+          <div class="mega-item" onclick="showSection('tech','fiches','C4.4')"><div class="mega-dot" style="background:#145a45"></div><div><div class="mega-label">Formation technique</div><div class="mega-code">C4.4</div></div></div>
+        </div>
+        <div class="mega-col">
+          <div class="mega-head">🧩 Cas pratiques</div>
+          <div class="mega-item" onclick="showSection('tech','cas','ALL')"><div class="mega-dot" style="background:#145a45"></div><div><div class="mega-label">Cas pratiques</div><div class="mega-code">Bloc 4</div></div></div>
+          <div class="mega-sep"></div>
+          <div class="mega-head">📁 CCF</div>
+          <div class="mega-item" onclick="showSection('tech','ccf','ALL')"><div class="mega-dot" style="background:#145a45"></div><div><div class="mega-label">Documents CCF</div><div class="mega-code">Évaluation</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nb-right" style="display:none">
+    <button class="btn-add" onclick="openModal()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      Ajouter
+    </button>
+  </div>
+</nav>
+
+<!-- VUE ACCUEIL -->
+<div id="app-home">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-ey">Plateforme pédagogique BTS CCST</div>
+      <h1 class="hero-title">Espace<br>Ressources</h1>
+      <p class="hero-desc">Fiches de cours, cas pratiques et documents CCF classés par compétence du référentiel BTS CCST — Lycée Jean Perrin, Marseille.</p>
+      <div class="hero-actions">
+        <button class="btn-hp" onclick="showSection('com','fiches','C1.1')">Accéder aux ressources →</button>
+        <button class="btn-ho" onclick="document.getElementById('about-anchor').scrollIntoView({behavior:'smooth'})">Consulter le programme ↓</button>
+      </div>
+    </div>
+  </div>
+  <div class="hero-strip">
+    <div class="strip-item"><div class="strip-num" id="totalDocs">86</div><div class="strip-label">Documents</div></div>
+    <div class="strip-item"><div class="strip-num">3</div><div class="strip-label">Blocs</div></div>
+    <div class="strip-item"><div class="strip-num">13</div><div class="strip-label">Compétences</div></div>
+  </div>
+
+  <!-- CARTES MATIÈRES -->
+  <div class="home-grid">
+    <div class="home-card com" onclick="showSection('com','fiches','C1.1')">
+      <div class="hc-bar"></div><div class="hc-em">💬</div>
+      <div class="hc-title">Conception et négociation<br>de solutions technico-commerciales</div>
+      <div class="hc-desc">Bloc 1 — Préparer, conduire et suivre des négociations technico-commerciales en B to B.</div>
+      <div class="hc-count" id="count-com">0 document</div>
+      <div class="hc-arr">→</div>
+    </div>
+    <div class="home-card mgmt" onclick="showSection('mgmt','fiches','C2.1')">
+      <div class="hc-bar"></div><div class="hc-em">📊</div>
+      <div class="hc-title">Management de l'activité<br>technico-commerciale</div>
+      <div class="hc-desc">Bloc 2 — Recruter, animer, analyser les parcours client et évaluer la performance.</div>
+      <div class="hc-count" id="count-mgmt">0 document</div>
+      <div class="hc-arr">→</div>
+    </div>
+    <div class="home-card tech" onclick="showSection('tech','fiches','C4.1')">
+      <div class="hc-bar"></div><div class="hc-em">⚙️</div>
+      <div class="hc-title">Expertise<br>technico-commerciale</div>
+      <div class="hc-desc">Bloc 4 — Veille sectorielle, analyse des besoins, solutions TC et formation technique.</div>
+      <div class="hc-count" id="count-tech">0 document</div>
+      <div class="hc-arr">→</div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="about-section" id="about-anchor">
+    <div class="about-left">
+      <div class="about-eyebrow">Le diplôme</div>
+      <h2 class="about-title">BTS Conseil et Commercialisation de Solutions Techniques</h2>
+      <p class="about-desc">Formation bac+2 axée sur la vente technique en B2B. Vous apprendrez à négocier des solutions complexes, manager une équipe commerciale et développer une expertise sectorielle pointue.</p>
+    </div>
+    <div class="about-right">
+      <div class="about-bloc about-bloc-link" onclick="showSection('com','fiches','C1.1')">
+        <div class="about-bloc-title">📋 Bloc 1 — Conception &amp; Négociation <span class="bloc-arrow">→</span></div>
+        <div class="about-bloc-text">Concevoir et négocier des solutions technico-commerciales : préparation, conseil, gestion du risque, entretien de vente et suivi d'affaire (C1.1 à C1.5).</div>
+      </div>
+      <div class="about-bloc about-bloc-link" onclick="showSection('mgmt','fiches','C2.1')">
+        <div class="about-bloc-title">📊 Bloc 2 — Management <span class="bloc-arrow">→</span></div>
+        <div class="about-bloc-text">Manager l'activité technico-commerciale : recrutement et formation, animation de réseau, optimisation de l'expérience client, évaluation de la performance (C2.1 à C2.4).</div>
+      </div>
+      <div class="about-bloc" style="opacity:.65">
+        <div class="about-bloc-title">🔍 Bloc 3 — Développement clientèle</div>
+        <div class="about-bloc-text">Développer la clientèle et la relation client : prospection, valorisation de l'offre, actions promotionnelles et fidélisation (C3.1 à C3.4).</div>
+      </div>
+      <div class="about-bloc about-bloc-link" onclick="showSection('tech','fiches','C4.1')">
+        <div class="about-bloc-title">⚙️ Bloc 4 — Expertise TC <span class="bloc-arrow">→</span></div>
+        <div class="about-bloc-text">Mettre en œuvre l'expertise technico-commerciale : veille concurrentielle et sectorielle, analyse des besoins, production de solutions et formation technique (C4.1 à C4.4).</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GE SECTION -->
+  <div class="ge-section">
+    <div class="ge-inner">
+      <div class="ge-left">
+        <div class="ge-eyebrow">✦ Spécificité unique en France</div>
+        <h2 class="ge-title">Intégrez une Grande École de Management directement en L3 — depuis le BTS</h2>
+        <p class="ge-text">Le BTS CCST de Jean Perrin est l'un des rares BTS en France à proposer, <strong>simultanément</strong> à la préparation du diplôme, une préparation intégrée aux concours d'admission en Grande École. Dès la 1ère année, des cours spécifiques animés par des <strong>enseignants de classes préparatoires</strong> vous préparent aux concours <strong><a href="https://grande-ecole.passerelle-esc.com/" target="_blank" style="color:#8ab3e8">Passerelle ESC</a></strong> et <strong><a href="https://www.ecricome.org/concours-ecole-de-commerce-bac-2-tremplin-bac-2/" target="_blank" style="color:#8ab3e8">Tremplin ECRICOME</a></strong>.</p>
+        <div class="ge-steps">
+          <div class="ge-step"><div class="ge-step-num">01</div><div class="ge-step-title">BTS CCST</div><div class="ge-step-sub">2 ans de formation</div></div>
+          <div class="ge-step"><div class="ge-step-num">02</div><div class="ge-step-title">Concours AST1</div><div class="ge-step-sub">TAGE-2 + TOEIC préparés en cours</div></div>
+          <div class="ge-step"><div class="ge-step-num">03</div><div class="ge-step-title">Grande École</div><div class="ge-step-sub">Intégration en L3</div></div>
+        </div>
+      </div>
+      <div class="ge-right">
+        <div class="ge-card-title">Ce que vous préparez en parallèle du BTS</div>
+        <div class="ge-card"><div class="ge-card-icon">🎯</div><div><div class="ge-card-h"><a href="https://www.tage2.fr/" target="_blank" style="color:white;text-decoration:none;">TAGE-2 — Tremplin &amp; Passerelle 1 ↗</a></div><div class="ge-card-p">Test d'aptitude aux études de gestion. Enseigné par des professeurs de classes prépa intégrés à l'équipe pédagogique.</div></div></div>
+        <div class="ge-card"><div class="ge-card-icon">🌍</div><div><div class="ge-card-h"><a href="https://www.etsglobal.org/fr/fr" target="_blank" style="color:white;text-decoration:none;">TOEIC — Certification internationale ↗</a></div><div class="ge-card-p">Préparé tout au long du BTS. Indispensable pour les dossiers de candidature en Grande École de Management.</div></div></div>
+        <div class="ge-card"><div class="ge-card-icon">🎓</div><div><div class="ge-card-h"><a href="https://www.site.ac-aix-marseille.fr/lyc-perrin/spip/Classe-preparatoire-ATS-economie-et-gestion-Pour-les-bac-2.html" target="_blank" style="color:white;text-decoration:none;">Prépa ATS — Option licence ↗</a></div><div class="ge-card-p">Des places réservées en classe préparatoire ATS au lycée Jean Perrin pour valider une licence et intégrer une école du Top 10.</div></div></div>
+        <div class="ge-card"><div class="ge-card-icon">📚</div><div><div class="ge-card-h">Autres poursuites d'études</div><div class="ge-card-p">Grandes Écoles de Management (via concours AST1), Prépa ATS au lycée Jean Perrin, Licences professionnelles, Bachelors (marketing digital, ingénieur commercial BtoB…).</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PERRIN SECTION -->
+  <div class="perrin-section">
+    <div class="perrin-inner">
+      <div class="perrin-header">
+        <div class="perrin-eyebrow">Notre établissement</div>
+        <h2 class="perrin-title">Lycée Jean Perrin — Marseille</h2>
+        <p class="perrin-sub">Établissement public polyvalent fondé en 1962, situé au cœur du 10e arrondissement.</p>
+      </div>
+      <div class="perrin-grid">
+        <div class="perrin-card"><div class="perrin-icon">🏛️</div><div class="perrin-card-title">Classes préparatoires reconnues</div><div class="perrin-card-text">Le lycée abrite des CPGE scientifiques (PCSI, PTSI), économiques et commerciales (ECT), préparant aux concours des ENS et des grandes écoles de management, ainsi qu'une <strong>Prépa ATS</strong> directement accessible après le BTS CCST.</div></div>
+        <div class="perrin-card"><div class="perrin-icon">🤝</div><div class="perrin-card-title">Réseau d'entreprises partenaires</div><div class="perrin-card-text">Des partenariats actifs avec des entreprises industrielles et de services en B2B pour les stages, cas pratiques et interventions de professionnels.</div></div>
+        <div class="perrin-card"><div class="perrin-icon">📍</div><div class="perrin-card-title">Localisation stratégique</div><div class="perrin-card-text">Au cœur de Marseille, 2e ville de France et capitale économique de la Méditerranée. Accès direct aux entreprises du bassin marseillais.</div></div>
+      </div>
+      <div class="perrin-address">
+        <span>📍 280 Boulevard Michelet, 13009 Marseille</span>
+        <span class="pa-sep">·</span>
+        <a href="https://www.site.ac-aix-marseille.fr/lyc-perrin/spip/" target="_blank">Site officiel ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div><strong>BTS CCST — Lycée Jean Perrin · Marseille</strong> &nbsp;·&nbsp; Espace pédagogique numérique</div>
+    <div style="display:flex;gap:16px;align-items:center">
+      <a href="mailto:btsccst.jeanperrin@gmail.com">btsccst.jeanperrin@gmail.com</a>
+      <span style="color:rgba(255,255,255,.2)">·</span>
+      <a href="https://www.site.ac-aix-marseille.fr/lyc-perrin/spip/" target="_blank">Lycée Jean Perrin ↗</a>
+    </div>
+  </footer>
+
+</div><!-- /app-home -->
+
+<!-- VUE MATIÈRES -->
+<div id="app-mat">
+
+  <div id="mat-com" class="mat-section com">
+    <div class="mat-hero"><div class="mat-hero-bg bg-com"></div>
+      <div class="mat-hero-content">
+        <div class="mat-hero-title">💬 Conception et négociation de solutions technico-commerciales</div>
+        <div class="mat-hero-sub">Bloc 1 · Unité U4</div>
+      </div>
+    </div>
+    <div class="breadcrumb">
+      <button class="bc-back" onclick="showHome()">← Retour</button>
+      <button class="bc-link" onclick="showHome()">Accueil</button>
+      <span class="bc-sep">›</span><span class="bc-cur">Conception &amp; Négociation</span>
+    </div>
+    <div class="type-tabs">
+      <button class="type-tab active" id="com-type-fiches" onclick="switchType('com','fiches')">📋 Fiches ressources</button>
+      <button class="type-tab" id="com-type-td" onclick="switchType('com','td')">✏️ TD</button>
+      <button class="type-tab" id="com-type-scoring" onclick="switchType('com','scoring')">🎯 Fiches Scoring</button>
+      <button class="type-tab" id="com-type-cas" onclick="switchType('com','cas')">🧩 Cas pratiques</button>
+      <button class="type-tab" id="com-type-ccf" onclick="switchType('com','ccf')">📁 CCF</button>
+    </div>
+    <div class="mat-body com" id="com-body"></div>
+  </div>
+
+  <div id="mat-mgmt" class="mat-section mgmt">
+    <div class="mat-hero"><div class="mat-hero-bg bg-mgmt"></div>
+      <div class="mat-hero-content">
+        <div class="mat-hero-title">📊 Management de l'activité technico-commerciale</div>
+        <div class="mat-hero-sub">Bloc 2 · Unité U5</div>
+      </div>
+    </div>
+    <div class="breadcrumb">
+      <button class="bc-back" onclick="showHome()">← Retour</button>
+      <button class="bc-link" onclick="showHome()">Accueil</button>
+      <span class="bc-sep">›</span><span class="bc-cur">Management</span>
+    </div>
+    <div class="type-tabs">
+      <button class="type-tab active" id="mgmt-type-fiches" onclick="switchType('mgmt','fiches')">📋 Fiches ressources</button>
+      <button class="type-tab" id="mgmt-type-methodes" onclick="switchType('mgmt','methodes')">📐 Fiches Méthodes</button>
+      <button class="type-tab" id="mgmt-type-revision" onclick="switchType('mgmt','revision')">🔁 Révisions</button>
+      <button class="type-tab" id="mgmt-type-cas" onclick="switchType('mgmt','cas')">🧩 Cas pratiques</button>
+    </div>
+    <div class="mat-body mgmt" id="mgmt-body"></div>
+  </div>
+
+  <div id="mat-tech" class="mat-section tech">
+    <div class="mat-hero"><div class="mat-hero-bg bg-tech"></div>
+      <div class="mat-hero-content">
+        <div class="mat-hero-title">⚙️ Expertise technico-commerciale</div>
+        <div class="mat-hero-sub">Bloc 4 · Unité U62</div>
+      </div>
+    </div>
+    <div class="breadcrumb">
+      <button class="bc-back" onclick="showHome()">← Retour</button>
+      <button class="bc-link" onclick="showHome()">Accueil</button>
+      <span class="bc-sep">›</span><span class="bc-cur">Expertise technico-commerciale</span>
+    </div>
+    <div class="type-tabs">
+      <button class="type-tab active" id="tech-type-fiches" onclick="switchType('tech','fiches')">📋 Fiches ressources</button>
+      <button class="type-tab" id="tech-type-cas" onclick="switchType('tech','cas')">🧩 Cas pratiques</button>
+      <button class="type-tab" id="tech-type-ccf" onclick="switchType('tech','ccf')">📁 CCF</button>
+    </div>
+    <div class="mat-body tech" id="tech-body"></div>
+  </div>
+
+  <button class="fab-back" onclick="showHome()">
+    ← Accueil
+  </button>
+</div><!-- /app-mat -->
+
+<!-- MODAL -->
+<div class="overlay" id="modalOverlay">
+  <div class="modal">
+    <div class="modal-head"><h2>Ajouter une ressource</h2><div class="modal-sub">Renseignez les informations du document</div></div>
+    <div class="field"><label>Titre *</label><input type="text" id="docTitle" placeholder="Ex. : Fiche méthode CAP/CAB"></div>
+    <div class="field"><label>Matière *</label>
+      <select id="docMatiere" onchange="updateTypeAndComp()">
+        <option value="com">Conception &amp; Négociation (Bloc 1)</option>
+        <option value="mgmt">Management (Bloc 2)</option>
+        <option value="tech">Expertise TC (Bloc 4)</option>
+      </select>
+    </div>
+    <div class="field"><label>Type *</label>
+      <select id="docType" onchange="updateCompSelect()">
+        <option value="fiches">📋 Fiches ressources</option>
+        <option value="td">✏️ TD (Travaux Dirigés) — B1</option>
+        <option value="scoring">🎯 Fiches Scoring — B1</option>
+        <option value="methodes">📐 Fiches Méthodes — B2</option>
+        <option value="revision">🔁 Révisions — B2</option>
+        <option value="cas">🧩 Cas pratiques</option>
+        <option value="ccf">📁 CCF</option>
+      </select>
+    </div>
+    <div class="field" id="compField">
+      <label>Compétence</label>
+      <select id="docComp"></select>
+    </div>
+    <div class="field"><label>Description (optionnel)</label><textarea id="docDesc" placeholder="Brève description du document"></textarea></div>
+    <div class="field">
+      <label>Lien Google Drive *</label>
+      <input type="url" id="docUrl" placeholder="https://drive.google.com/file/d/...">
+    </div>
+    <div class="modal-foot">
+      <button class="btn-cancel" onclick="closeModal()">Annuler</button>
+      <button class="btn-confirm" onclick="addResource()">Ajouter le document</button>
+    </div>
+  </div>
+</div>
+
+<!-- PDF VIEWER -->
+<div class="pdf-overlay" id="pdfOverlay">
+  <div class="pdf-header">
+    <button class="btn-pclose" onclick="closePdf()">← Retour</button>
+    <div class="pdf-title" id="pdfTitle"></div>
+  </div>
+  <iframe class="pdf-frame" id="pdfFrame"></iframe>
+</div>
+
+<div class="toast" id="toast"><div class="toast-dot"></div><span id="toastMsg"></span></div>
+
+<script src="app.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('sw.js');
+  });
+}
+</script>
+</body>
+</html>
