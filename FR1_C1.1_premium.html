@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FR1 C1.1 — Communication interpersonnelle et négociation TC</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --ink:#0A0F1E;
+  --ink2:#1C2340;
+  --ink3:#3A4263;
+  --coral:#E8573A;
+  --coral2:#F07557;
+  --amber:#F5A623;
+  --teal:#0D9E8E;
+  --teal2:#14B8A6;
+  --violet:#6B4FBB;
+  --violet2:#8B70D8;
+  --fog:#F2F3F7;
+  --fog2:#E8EAF2;
+  --fog3:#D8DBE8;
+  --white:#FFFFFF;
+  --r:12px;
+}
+
+body{
+  font-family:'DM Sans',sans-serif;
+  font-size:10.5pt;
+  line-height:1.65;
+  color:var(--ink);
+  background:#fff;
+  max-width:210mm;
+  margin:0 auto;
+}
+
+/* ── COVER ── */
+.cover{
+  background:var(--ink);
+  min-height:200px;
+  padding:52px 56px 44px;
+  position:relative;
+  overflow:hidden;
+}
+.cover-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+  background-size:40px 40px;
+}
+.cover-accent{
+  position:absolute;
+  top:-60px;right:-40px;
+  width:320px;height:320px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(232,87,58,.25) 0%,transparent 70%);
+}
+.cover-accent2{
+  position:absolute;
+  bottom:-80px;left:20%;
+  width:240px;height:240px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(13,158,142,.15) 0%,transparent 70%);
+}
+.cover-eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:'DM Mono',monospace;
+  font-size:8.5pt;letter-spacing:.12em;
+  color:rgba(255,255,255,.4);
+  text-transform:uppercase;
+  margin-bottom:24px;
+  position:relative;z-index:1;
+}
+.cover-eyebrow::before{
+  content:'';display:inline-block;
+  width:24px;height:2px;
+  background:var(--coral);
+  border-radius:2px;
+}
+.cover h1{
+  font-family:'Syne',sans-serif;
+  font-size:30pt;font-weight:800;
+  line-height:1.1;color:#fff;
+  max-width:460px;
+  margin-bottom:14px;
+  position:relative;z-index:1;
+}
+.cover h1 em{
+  font-style:normal;
+  color:var(--coral2);
+}
+.cover-sub{
+  font-size:11pt;color:rgba(255,255,255,.5);
+  font-weight:300;margin-bottom:36px;
+  position:relative;z-index:1;
+}
+.cover-pills{
+  display:flex;flex-wrap:wrap;gap:8px;
+  position:relative;z-index:1;
+}
+.pill{
+  font-family:'DM Mono',monospace;
+  font-size:8pt;font-weight:500;
+  padding:5px 12px;border-radius:100px;
+  letter-spacing:.06em;
+}
+.pill-coral{background:rgba(232,87,58,.2);color:var(--coral2);border:1px solid rgba(232,87,58,.3);}
+.pill-teal{background:rgba(13,158,142,.2);color:var(--teal2);border:1px solid rgba(13,158,142,.3);}
+.pill-dim{background:rgba(255,255,255,.07);color:rgba(255,255,255,.4);border:1px solid rgba(255,255,255,.1);}
+
+/* ── INTRO ── */
+.intro{
+  background:var(--fog);
+  border-left:3px solid var(--coral);
+  padding:20px 56px;
+}
+.intro p{
+  font-size:10.5pt;color:var(--ink2);
+  line-height:1.75;font-style:italic;
+}
+
+/* ── BODY ── */
+.body{padding:0 56px;}
+
+/* ── SECTION ── */
+.section{margin:48px 0 0;}
+.s-label{
+  font-family:'DM Mono',monospace;
+  font-size:8pt;font-weight:500;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--coral);margin-bottom:8px;
+}
+.s-title{
+  font-family:'Syne',sans-serif;
+  font-size:16pt;font-weight:700;
+  color:var(--ink);line-height:1.2;
+  margin-bottom:24px;
+  padding-bottom:12px;
+  border-bottom:1.5px solid var(--fog2);
+}
+
+/* ── SCHEMA COMMUNICATION ── */
+.schema-comm{
+  display:flex;align-items:center;
+  gap:0;margin:28px 0;
+  overflow-x:auto;
+}
+.sc-node{
+  flex:1;min-width:90px;
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;
+  padding:16px 8px;
+  background:var(--fog);
+  border-radius:var(--r);
+  position:relative;
+}
+.sc-node.highlight{background:var(--ink);color:#fff;}
+.sc-node.highlight .sc-icon{color:var(--coral2);}
+.sc-node.highlight .sc-name{color:#fff;}
+.sc-node.highlight .sc-desc{color:rgba(255,255,255,.5);}
+.sc-icon{font-size:18pt;margin-bottom:6px;}
+.sc-name{
+  font-family:'Syne',sans-serif;
+  font-size:9pt;font-weight:700;
+  color:var(--ink);margin-bottom:3px;
+}
+.sc-desc{font-size:7.5pt;color:var(--ink3);line-height:1.4;}
+.sc-arrow{
+  font-size:16pt;color:var(--coral);
+  padding:0 4px;flex-shrink:0;
+  align-self:center;
+}
+.sc-bruit{
+  position:absolute;top:-20px;left:50%;transform:translateX(-50%);
+  background:var(--amber);
+  color:var(--ink);
+  font-size:7pt;font-weight:700;
+  padding:2px 8px;border-radius:100px;
+  white-space:nowrap;
+}
+.sc-feedback{
+  text-align:center;
+  font-size:8pt;color:var(--ink3);
+  margin-top:10px;
+  font-style:italic;
+}
+.sc-feedback span{color:var(--teal);font-weight:600;}
+
+/* ── TABLE STANDARD ── */
+.tbl{
+  width:100%;border-collapse:separate;border-spacing:0;
+  border-radius:var(--r);overflow:hidden;
+  border:1.5px solid var(--fog2);
+  margin:20px 0;font-size:9.5pt;
+}
+.tbl thead th{
+  padding:11px 16px;
+  font-family:'Syne',sans-serif;
+  font-size:8.5pt;font-weight:700;
+  text-transform:uppercase;letter-spacing:.06em;
+  text-align:left;
+}
+.tbl thead th:nth-child(1){background:var(--ink);color:rgba(255,255,255,.7);}
+.tbl thead th:nth-child(2){background:var(--fog);color:var(--ink3);}
+.tbl thead th:nth-child(3){background:var(--coral);color:#fff;}
+.tbl tbody tr td{
+  padding:11px 16px;vertical-align:top;
+  border-bottom:1px solid var(--fog2);
+  line-height:1.55;
+}
+.tbl tbody tr:last-child td{border-bottom:none;}
+.tbl tbody tr td:nth-child(1){
+  font-family:'Syne',sans-serif;font-weight:700;
+  color:var(--ink);background:var(--fog);
+  width:20%;
+}
+.tbl tbody tr td:nth-child(2){color:var(--ink3);width:38%;}
+.tbl tbody tr td:nth-child(3){color:var(--ink2);background:#FFF8F6;font-weight:500;width:42%;}
+
+/* ── 3 CANAUX COMMUNICATION ── */
+.canaux{
+  display:grid;grid-template-columns:1fr 1fr 1fr;
+  gap:14px;margin:24px 0;
+}
+.canal-card{
+  border-radius:var(--r);overflow:hidden;
+  border:1.5px solid var(--fog2);
+}
+.canal-head{
+  padding:14px 16px 12px;
+  display:flex;align-items:center;gap:10px;
+}
+.canal-pct{
+  font-family:'Syne',sans-serif;
+  font-size:28pt;font-weight:800;
+  line-height:1;
+}
+.canal-label-wrap{flex:1;}
+.canal-label{
+  font-family:'Syne',sans-serif;
+  font-size:10pt;font-weight:700;
+  line-height:1.1;
+}
+.canal-sub{font-size:8pt;opacity:.6;margin-top:2px;}
+.canal-body{
+  padding:12px 16px;
+  border-top:1.5px solid var(--fog2);
+  font-size:9pt;color:var(--ink3);
+  line-height:1.6;
+}
+.canal-body li{
+  list-style:none;padding:3px 0;
+  display:flex;gap:8px;align-items:flex-start;
+}
+.canal-body li::before{
+  content:'→';font-weight:700;
+  flex-shrink:0;margin-top:1px;
+}
+.c-verbal .canal-head{background:#EEF4FF;}
+.c-verbal .canal-pct{color:#2B5BE8;}
+.c-verbal .canal-body li::before{color:#2B5BE8;}
+.c-para .canal-head{background:#FFF3E8;}
+.c-para .canal-pct{color:var(--coral);}
+.c-para .canal-body li::before{color:var(--coral);}
+.c-nonverbal .canal-head{background:#EEFAF7;}
+.c-nonverbal .canal-pct{color:var(--teal);}
+.c-nonverbal .canal-body li::before{color:var(--teal);}
+
+/* ── ECOUTE ACTIVE ── */
+.ecoute-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:10px;margin:24px 0;
+}
+.ecoute-item{
+  display:flex;gap:14px;
+  padding:14px 16px;
+  background:var(--fog);
+  border-radius:10px;
+  border:1px solid var(--fog2);
+  align-items:flex-start;
+}
+.ecoute-num{
+  font-family:'Syne',sans-serif;
+  font-size:22pt;font-weight:800;
+  color:var(--fog3);
+  line-height:1;flex-shrink:0;
+  width:36px;text-align:center;
+}
+.ecoute-content{}
+.ecoute-name{
+  font-family:'Syne',sans-serif;
+  font-size:9.5pt;font-weight:700;
+  color:var(--ink);margin-bottom:3px;
+}
+.ecoute-desc{font-size:8.5pt;color:var(--ink3);line-height:1.55;}
+.ecoute-ex{
+  font-size:8pt;color:var(--teal);
+  font-style:italic;margin-top:5px;
+  padding-top:5px;
+  border-top:1px solid var(--fog3);
+}
+
+/* ── SOCIO-STYLES ── */
+.profils-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:12px;margin:24px 0;
+}
+.profil-card{
+  border-radius:var(--r);
+  border:1.5px solid var(--fog2);
+  overflow:hidden;
+}
+.profil-head{
+  padding:12px 16px;
+  display:flex;align-items:center;gap:10px;
+}
+.profil-icon{
+  font-size:18pt;flex-shrink:0;
+}
+.profil-name{
+  font-family:'Syne',sans-serif;
+  font-size:11pt;font-weight:700;
+}
+.profil-tag{
+  font-size:7.5pt;color:var(--ink3);
+  margin-top:1px;
+}
+.profil-body{
+  padding:12px 16px;
+  border-top:1.5px solid var(--fog2);
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:10px;font-size:8.5pt;
+}
+.profil-col-label{
+  font-weight:700;color:var(--ink3);
+  font-size:7.5pt;text-transform:uppercase;
+  letter-spacing:.06em;margin-bottom:4px;
+}
+.profil-col-val{color:var(--ink2);line-height:1.5;}
+.p-analytique .profil-head{background:#F0F4FF;}
+.p-analytique .profil-name{color:#2B5BE8;}
+.p-dirigeant .profil-head{background:#FFF0ED;}
+.p-dirigeant .profil-name{color:var(--coral);}
+.p-expressif .profil-head{background:#FFF8E8;}
+.p-expressif .profil-name{color:var(--amber);}
+.p-aimable .profil-head{background:#EEFAF7;}
+.p-aimable .profil-name{color:var(--teal);}
+
+/* ── BIAIS ── */
+.biais-row{
+  display:flex;gap:10px;
+  padding:10px 14px;
+  margin-bottom:8px;
+  background:var(--fog);
+  border-radius:8px;
+  border-left:3px solid var(--amber);
+  font-size:9.5pt;
+  align-items:flex-start;
+}
+.biais-key{
+  font-family:'Syne',sans-serif;
+  font-weight:700;color:var(--amber);
+  min-width:140px;flex-shrink:0;
+}
+.biais-val{color:var(--ink3);line-height:1.55;}
+
+/* ── FORMES NEGO ── */
+.tbl2{
+  width:100%;border-collapse:separate;border-spacing:0;
+  border-radius:var(--r);overflow:hidden;
+  border:1.5px solid var(--fog2);
+  margin:20px 0;font-size:9.5pt;
+}
+.tbl2 thead th{
+  padding:11px 16px;
+  font-family:'Syne',sans-serif;
+  font-size:8.5pt;font-weight:700;
+  text-transform:uppercase;letter-spacing:.06em;
+  text-align:left;
+  background:var(--ink2);color:rgba(255,255,255,.75);
+}
+.tbl2 tbody tr:nth-child(odd) td{background:#FAFBFD;}
+.tbl2 tbody tr td{
+  padding:11px 16px;vertical-align:top;
+  border-bottom:1px solid var(--fog2);
+  line-height:1.55;
+}
+.tbl2 tbody tr:last-child td{border-bottom:none;}
+.tbl2 tbody td:nth-child(1){
+  font-weight:700;color:var(--ink);width:28%;
+}
+.tbl2 tbody td:nth-child(2){color:var(--ink3);width:36%;}
+.tbl2 tbody td:nth-child(3){color:var(--ink2);font-weight:500;width:36%;}
+
+/* ── OUTILS COLLABORATIFS ── */
+.outils-grid{
+  display:grid;grid-template-columns:1fr 1fr 1fr 1fr;
+  gap:10px;margin:24px 0;
+}
+.outil-card{
+  padding:14px;
+  background:var(--fog);
+  border-radius:10px;
+  border:1px solid var(--fog2);
+  text-align:center;
+}
+.outil-icon{font-size:20pt;margin-bottom:8px;}
+.outil-name{
+  font-family:'Syne',sans-serif;
+  font-size:8.5pt;font-weight:700;
+  color:var(--ink);margin-bottom:4px;
+  line-height:1.2;
+}
+.outil-desc{font-size:7.5pt;color:var(--ink3);line-height:1.5;}
+
+/* ── ETHIQUE ── */
+.ethique-strip{
+  background:var(--ink);
+  border-radius:var(--r);
+  padding:24px 28px;
+  margin:24px 0;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+.eth-item{
+  display:flex;gap:12px;align-items:flex-start;
+}
+.eth-dot{
+  width:8px;height:8px;
+  border-radius:50%;
+  background:var(--coral);
+  flex-shrink:0;margin-top:5px;
+}
+.eth-text{font-size:9pt;color:rgba(255,255,255,.7);line-height:1.6;}
+.eth-text strong{color:rgba(255,255,255,.95);}
+
+/* ── SYNTHESE ── */
+.synthese{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:12px;margin:40px 0 0;
+}
+.syn-card{
+  background:var(--fog);
+  border-radius:var(--r);
+  padding:20px;
+  border:1.5px solid var(--fog2);
+  text-align:center;
+}
+.syn-num{
+  font-family:'Syne',sans-serif;
+  font-size:32pt;font-weight:800;
+  color:var(--fog3);
+  line-height:1;margin-bottom:4px;
+}
+.syn-label{
+  font-family:'Syne',sans-serif;
+  font-size:8.5pt;font-weight:700;
+  color:var(--ink);
+  text-transform:uppercase;letter-spacing:.06em;
+  margin-bottom:6px;
+}
+.syn-text{font-size:8pt;color:var(--ink3);line-height:1.5;}
+
+/* ── POINTS CLES ── */
+.cles{
+  background:var(--ink);
+  padding:28px 56px;
+  margin-top:0;
+}
+.cles-title{
+  font-family:'DM Mono',monospace;
+  font-size:8.5pt;font-weight:500;
+  color:var(--coral);
+  text-transform:uppercase;letter-spacing:.1em;
+  margin-bottom:18px;
+}
+.cles-list{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:8px 32px;
+  list-style:none;
+}
+.cles-list li{
+  font-size:9.5pt;color:rgba(255,255,255,.7);
+  line-height:1.55;
+  display:flex;gap:10px;align-items:flex-start;
+}
+.cles-list li::before{
+  content:'—';color:var(--coral);
+  font-weight:700;flex-shrink:0;
+}
+.cles-list li strong{color:rgba(255,255,255,.95);}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--fog);
+  border-top:1px solid var(--fog2);
+  padding:12px 56px;
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:'DM Mono',monospace;
+  font-size:7.5pt;color:var(--ink3);
+}
+
+@media print{
+  body{max-width:none;}
+  .section{page-break-inside:avoid;}
+  .synthese{page-break-before:always;}
+}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-grid"></div>
+  <div class="cover-accent"></div>
+  <div class="cover-accent2"></div>
+  <div class="cover-eyebrow">BTS CCST — Bloc 1 &nbsp;·&nbsp; Fiche Ressource FR1</div>
+  <h1>Communication <em>interpersonnelle</em> et négociation TC</h1>
+  <p class="cover-sub">Formes et situations de négociation · Outils collaboratifs · Écoute active</p>
+  <div class="cover-pills">
+    <span class="pill pill-coral">C1.1 — Préparer une négociation TC</span>
+    <span class="pill pill-teal">Modèle de communication</span>
+    <span class="pill pill-dim">Socio-styles · MBTI</span>
+    <span class="pill pill-dim">Éthique commerciale</span>
+  </div>
+</div>
+
+<!-- INTRO -->
+<div class="intro">
+  <p>La communication est le socle de toute négociation technico-commerciale. Un TC qui maîtrise les mécanismes de la communication <strong>crée la confiance, adapte son discours à chaque interlocuteur, détecte les signaux faibles</strong> et construit une relation commerciale durable. Sans communication maîtrisée, même la meilleure offre technique peut être rejetée.</p>
+</div>
+
+<div class="body">
+
+<!-- SECTION 1 -->
+<div class="section">
+  <div class="s-label">01 — Modèle de base</div>
+  <div class="s-title">Le modèle de communication appliqué à la vente BtoB</div>
+
+  <!-- SCHÉMA COMMUNICATION -->
+  <div class="schema-comm">
+    <div class="sc-node highlight">
+      <div class="sc-icon">🎙</div>
+      <div class="sc-name">Émetteur</div>
+      <div class="sc-desc">Le TC adapte son registre (technique, financier, décideur)</div>
+    </div>
+    <div class="sc-arrow">→</div>
+    <div class="sc-node" style="position:relative;">
+      <div class="sc-bruit">⚡ Bruit</div>
+      <div class="sc-icon">✉</div>
+      <div class="sc-name">Message</div>
+      <div class="sc-desc">Argumentaire CAP personnalisé selon les besoins</div>
+    </div>
+    <div class="sc-arrow">→</div>
+    <div class="sc-node">
+      <div class="sc-icon">📡</div>
+      <div class="sc-name">Canal</div>
+      <div class="sc-desc">Oral, écrit, digital, visio selon contexte phygital</div>
+    </div>
+    <div class="sc-arrow">→</div>
+    <div class="sc-node">
+      <div class="sc-icon">🔄</div>
+      <div class="sc-name">Encodage / Décodage</div>
+      <div class="sc-desc">Adapter le vocabulaire technique au niveau de l'interlocuteur</div>
+    </div>
+    <div class="sc-arrow">→</div>
+    <div class="sc-node highlight">
+      <div class="sc-icon">👤</div>
+      <div class="sc-name">Récepteur</div>
+      <div class="sc-desc">Client/prospect — vérifier la réception par reformulation</div>
+    </div>
+  </div>
+  <p class="sc-feedback">↺ <span>Rétroaction (feedback)</span> — Questions de vérification, silence actif, reformulation d'adhésion</p>
+
+  <table class="tbl">
+    <thead><tr><th>Composante</th><th>Définition</th><th>Application TC en négociation</th></tr></thead>
+    <tbody>
+      <tr><td>Émetteur</td><td>Celui qui émet le message</td><td>Le TC adapte son registre selon l'interlocuteur (technique, financier, décideur)</td></tr>
+      <tr><td>Récepteur</td><td>Celui qui reçoit et décode</td><td>Client/prospect : vérifier la bonne réception par reformulation</td></tr>
+      <tr><td>Message</td><td>Contenu transmis</td><td>Argumentaire CAP personnalisé selon les besoins identifiés</td></tr>
+      <tr><td>Canal</td><td>Support de transmission</td><td>Choix entre oral, écrit, digital, visioconférence selon le contexte phygital</td></tr>
+      <tr><td>Encodage / Décodage</td><td>Mise en forme et interprétation</td><td>Adapter le vocabulaire technique au niveau de l'interlocuteur</td></tr>
+      <tr><td>Rétroaction</td><td>Réponse de l'interlocuteur</td><td>Questions de vérification, silence actif, reformulation d'adhésion</td></tr>
+      <tr><td>Bruit</td><td>Perturbation du signal</td><td>Jargon incompris, bruit ambiant, mauvaise connexion visio, préjugés</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SECTION 2 -->
+<div class="section">
+  <div class="s-label">02 — Niveaux de communication</div>
+  <div class="s-title">Communication verbale, paraverbale et non verbale</div>
+
+  <div class="canaux">
+    <!-- VERBAL -->
+    <div class="canal-card c-verbal">
+      <div class="canal-head">
+        <div class="canal-pct" style="color:#2B5BE8;">7%</div>
+        <div class="canal-label-wrap">
+          <div class="canal-label" style="color:#2B5BE8;">Verbale</div>
+          <div class="canal-sub">Les mots</div>
+        </div>
+      </div>
+      <div class="canal-body">
+        <ul>
+          <li>Vocabulaire adapté à l'interlocuteur</li>
+          <li>Registre expert ou pédagogique</li>
+          <li>Phrases courtes et affirmatives</li>
+          <li>Questions ouvertes pour découvrir</li>
+          <li>Reformulations de validation</li>
+          <li>Mots ponts : « effectivement », « c'est-à-dire »</li>
+        </ul>
+      </div>
+    </div>
+    <!-- PARAVERBALE -->
+    <div class="canal-card c-para">
+      <div class="canal-head">
+        <div class="canal-pct">38%</div>
+        <div class="canal-label-wrap">
+          <div class="canal-label" style="color:var(--coral);">Paraverbale</div>
+          <div class="canal-sub">La voix</div>
+        </div>
+      </div>
+      <div class="canal-body">
+        <ul>
+          <li><strong>Débit</strong> : varier le rythme (ni trop vite, ni trop lent)</li>
+          <li><strong>Intonation</strong> : voix descendante = affirmation ferme</li>
+          <li><strong>Volume</strong> : hausser sur les arguments clés</li>
+          <li><strong>Silence stratégique</strong> : après une proposition de prix</li>
+          <li><strong>Articulation</strong> : mot technique mal articulé = doute</li>
+        </ul>
+      </div>
+    </div>
+    <!-- NON VERBALE -->
+    <div class="canal-card c-nonverbal">
+      <div class="canal-head">
+        <div class="canal-pct" style="color:var(--teal);">55%</div>
+        <div class="canal-label-wrap">
+          <div class="canal-label" style="color:var(--teal);">Non verbale</div>
+          <div class="canal-sub">Le corps</div>
+        </div>
+      </div>
+      <div class="canal-body">
+        <ul>
+          <li>Posture ouverte, droite, dynamique</li>
+          <li>Regard direct : confiance et autorité</li>
+          <li>Sourire : bienveillance et ouverture</li>
+          <li>Hochement de tête : écoute active</li>
+          <li>Gestes ouverts : paumes visibles</li>
+          <li>Miroring : adoption partielle de la posture client</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <p style="font-size:8.5pt;color:var(--ink3);text-align:center;font-style:italic;margin-bottom:8px;">Règle de Mehrabian — dans un message émotionnel, les mots ne comptent que pour 7%. Le TC doit soigner les 3 niveaux.</p>
+</div>
+
+<!-- SECTION 3 -->
+<div class="section">
+  <div class="s-label">03 — Écoute active</div>
+  <div class="s-title">Les 6 techniques d'écoute active à maîtriser</div>
+  <div class="ecoute-grid">
+    <div class="ecoute-item">
+      <div class="ecoute-num">1</div>
+      <div class="ecoute-content">
+        <div class="ecoute-name">Écoute silencieuse</div>
+        <div class="ecoute-desc">Laisser parler sans interrompre, montrer l'attention par le regard et le hochement de tête.</div>
+      </div>
+    </div>
+    <div class="ecoute-item">
+      <div class="ecoute-num">2</div>
+      <div class="ecoute-content">
+        <div class="ecoute-name">Reformulation miroir</div>
+        <div class="ecoute-desc">Répéter les derniers mots du client pour l'inviter à développer.</div>
+        <div class="ecoute-ex">Client : « Je suis préoccupé par la maintenance. » TC : « La maintenance... »</div>
+      </div>
+    </div>
+    <div class="ecoute-item">
+      <div class="ecoute-num">3</div>
+      <div class="ecoute-content">
+        <div class="ecoute-name">Reformulation paraphrase</div>
+        <div class="ecoute-desc">Reformuler en propres mots pour valider la compréhension.</div>
+        <div class="ecoute-ex">« Si je comprends bien, votre priorité est de réduire les coûts d'exploitation sur 5 ans ? »</div>
+      </div>
+    </div>
+    <div class="ecoute-item">
+      <div class="ecoute-num">4</div>
+      <div class="ecoute-content">
+        <div class="ecoute-name">Reformulation résumé</div>
+        <div class="ecoute-desc">Synthétiser en fin de découverte — base de l'argumentation.</div>
+        <div class="ecoute-ex">« Pour résumer : solution fiable, conforme BREEAM, livrable avant mars. »</div>
+      </div>
+    </div>
+    <div class="ecoute-item">
+      <div class="ecoute-num">5</div>
+      <div class="ecoute-content">
+        <div class="ecoute-name">Question de clarification</div>
+        <div class="ecoute-desc">Creuser un point imprécis pour bien comprendre le besoin réel.</div>
+        <div class="ecoute-ex">« Quand vous dites "solution clé en main", qu'entendez-vous exactement ? »</div>
+      </div>
+    </div>
+    <div class="ecoute-item">
+      <div class="ecoute-num">6</div>
+      <div class="ecoute-content">
+        <div class="ecoute-name">Validation d'adhésion</div>
+        <div class="ecoute-desc">Vérifier que chaque argument a été compris et accepté avant de passer au suivant.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4 -->
+<div class="section">
+  <div class="s-label">04 — Connaissance de soi et des autres</div>
+  <div class="s-title">Socio-styles et adaptation de la communication</div>
+  <div class="profils-grid">
+    <div class="profil-card p-analytique">
+      <div class="profil-head">
+        <div class="profil-icon">📊</div>
+        <div>
+          <div class="profil-name">Analytique</div>
+          <div class="profil-tag">Méthodique · Factuel · Prudent</div>
+        </div>
+      </div>
+      <div class="profil-body">
+        <div>
+          <div class="profil-col-label">Il attend</div>
+          <div class="profil-col-val">Rigueur, chiffres, documentation, délais précis</div>
+        </div>
+        <div>
+          <div class="profil-col-label">Adapter sa communication</div>
+          <div class="profil-col-val">Dossier complet, données comparatives, pas de pression</div>
+        </div>
+      </div>
+    </div>
+    <div class="profil-card p-dirigeant">
+      <div class="profil-head">
+        <div class="profil-icon">⚡</div>
+        <div>
+          <div class="profil-name">Dirigeant</div>
+          <div class="profil-tag">Décideur rapide · Direct · ROI</div>
+        </div>
+      </div>
+      <div class="profil-body">
+        <div>
+          <div class="profil-col-label">Il attend</div>
+          <div class="profil-col-val">Efficacité, bénéfices immédiats, respect du temps</div>
+        </div>
+        <div>
+          <div class="profil-col-label">Adapter sa communication</div>
+          <div class="profil-col-val">Aller droit au but, synthèse chiffrée, 2 options max</div>
+        </div>
+      </div>
+    </div>
+    <div class="profil-card p-expressif">
+      <div class="profil-head">
+        <div class="profil-icon">✨</div>
+        <div>
+          <div class="profil-name">Expressif</div>
+          <div class="profil-tag">Enthousiaste · Créatif · Image</div>
+        </div>
+      </div>
+      <div class="profil-body">
+        <div>
+          <div class="profil-col-label">Il attend</div>
+          <div class="profil-col-val">Enthousiasme partagé, vision, nouveauté</div>
+        </div>
+        <div>
+          <div class="profil-col-label">Adapter sa communication</div>
+          <div class="profil-col-val">Visuels, success stories, créer la projection</div>
+        </div>
+      </div>
+    </div>
+    <div class="profil-card p-aimable">
+      <div class="profil-head">
+        <div class="profil-icon">🤝</div>
+        <div>
+          <div class="profil-name">Aimable</div>
+          <div class="profil-tag">Relationnel · Consensus · Fidèle</div>
+        </div>
+      </div>
+      <div class="profil-body">
+        <div>
+          <div class="profil-col-label">Il attend</div>
+          <div class="profil-col-val">Confiance, écoute, absence de risque</div>
+        </div>
+        <div>
+          <div class="profil-col-label">Adapter sa communication</div>
+          <div class="profil-col-val">Prendre le temps, rassurer, références clients</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:16px;">
+    <div style="font-family:'DM Mono',monospace;font-size:8pt;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:10px;">⚠ Vigilance — Biais de communication</div>
+    <div class="biais-row"><span class="biais-key">Effet de halo</span><span class="biais-val">Juger tout l'interlocuteur positivement ou négativement sur un seul trait apparent</span></div>
+    <div class="biais-row"><span class="biais-key">Projection</span><span class="biais-val">Supposer que l'autre pense comme soi → toujours vérifier par questionnement</span></div>
+    <div class="biais-row"><span class="biais-key">Filtre culturel</span><span class="biais-val">En BtoB international, les codes de politesse et de hiérarchie varient fortement</span></div>
+    <div class="biais-row"><span class="biais-key">Effet Pygmalion</span><span class="biais-val">Les attentes du TC influencent réellement le comportement du client → rester ouvert</span></div>
+  </div>
+</div>
+
+<!-- SECTION 5 -->
+<div class="section">
+  <div class="s-label">05 — Formes de négociation</div>
+  <div class="s-title">Les formes et situations de négociation BtoB</div>
+  <table class="tbl2">
+    <thead><tr><th>Forme de négociation</th><th>Caractéristiques</th><th>Implications pour le TC</th></tr></thead>
+    <tbody>
+      <tr><td>Directe (face à face)</td><td>Un TC face à un ou plusieurs interlocuteurs, présentiel</td><td>Maîtrise communication non verbale, gestion salle, supports physiques</td></tr>
+      <tr><td>À distance (visio/tél.)</td><td>Teams, Zoom, Webex — de plus en plus fréquent en BtoB</td><td>Soigner arrière-plan, lumière, vérifier connexion, partage écran efficace</td></tr>
+      <tr><td>En équipe (co-vente)</td><td>TC + expert technique, TC + direction commerciale</td><td>Coordination des rôles, briefing préalable, cohérence des messages</td></tr>
+      <tr><td>Multipartite</td><td>Appel d'offres, consultation plurielle, commission</td><td>Positionnement écrit soigné, soutenance orale structurée</td></tr>
+      <tr><td>Asynchrone</td><td>Échanges email, CRM partagé, plateforme collaborative</td><td>Écrits professionnels soignés, traçabilité, réactivité</td></tr>
+      <tr><td>Synchrone à distance</td><td>Chat en direct, conférence téléphonique</td><td>Clarté du discours, gestion des silences, reformulation fréquente</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SECTION 6 -->
+<div class="section">
+  <div class="s-label">06 — Outils digitaux</div>
+  <div class="s-title">Les outils collaboratifs en négociation BtoB</div>
+  <div class="outils-grid">
+    <div class="outil-card">
+      <div class="outil-icon">🗂</div>
+      <div class="outil-name">CRM</div>
+      <div class="outil-desc">Salesforce, HubSpot, Sellsy — historique client, préparation entretien, traçabilité</div>
+    </div>
+    <div class="outil-card">
+      <div class="outil-icon">💬</div>
+      <div class="outil-name">Messagerie collaborative</div>
+      <div class="outil-desc">Teams, Slack — coordination équipe commerciale-technique</div>
+    </div>
+    <div class="outil-card">
+      <div class="outil-icon">✍️</div>
+      <div class="outil-name">Signature électronique</div>
+      <div class="outil-desc">DocuSign, YouSign — finaliser contrats à distance rapidement</div>
+    </div>
+    <div class="outil-card">
+      <div class="outil-icon">⚙️</div>
+      <div class="outil-name">Configurateur produit</div>
+      <div class="outil-desc">Personnaliser l'offre technique en temps réel pendant l'entretien</div>
+    </div>
+    <div class="outil-card">
+      <div class="outil-icon">📊</div>
+      <div class="outil-name">Tableau de bord</div>
+      <div class="outil-desc">Power BI, Notion — suivi affaire en temps réel, accès client</div>
+    </div>
+    <div class="outil-card">
+      <div class="outil-icon">📁</div>
+      <div class="outil-name">Espace client démat.</div>
+      <div class="outil-desc">Partage documents techniques, devis, bons de commande</div>
+    </div>
+    <div class="outil-card">
+      <div class="outil-icon">🎥</div>
+      <div class="outil-name">Visioconférence</div>
+      <div class="outil-desc">Teams, Zoom — entretiens commerciaux, soutenance d'offre</div>
+    </div>
+    <div class="outil-card">
+      <div class="outil-icon">📋</div>
+      <div class="outil-name">Outils de sondage</div>
+      <div class="outil-desc">Typeform, Google Forms — recueil de besoins, satisfaction post-vente</div>
+    </div>
+  </div>
+
+  <!-- ÉTHIQUE -->
+  <div class="ethique-strip">
+    <div class="eth-item">
+      <div class="eth-dot"></div>
+      <div class="eth-text"><strong>Obligation légale de conseil</strong> — le TC engage sa responsabilité sur les conseils délivrés (art. 1240 Code Civil)</div>
+    </div>
+    <div class="eth-item">
+      <div class="eth-dot"></div>
+      <div class="eth-text"><strong>Ne jamais induire en erreur</strong> — informations inexactes = risque de litige et atteinte à la réputation</div>
+    </div>
+    <div class="eth-item">
+      <div class="eth-dot"></div>
+      <div class="eth-text"><strong>Confidentialité</strong> — ne pas divulguer les informations sensibles d'un client à un autre</div>
+    </div>
+    <div class="eth-item">
+      <div class="eth-dot"></div>
+      <div class="eth-text"><strong>Transparence tarifaire</strong> — information précontractuelle obligatoire (CGV, prix — art. L.441-1 Code com.)</div>
+    </div>
+    <div class="eth-item" style="grid-column:1/-1;">
+      <div class="eth-dot"></div>
+      <div class="eth-text"><strong>Respect de la promesse commerciale</strong> — tout engagement oral peut avoir valeur contractuelle</div>
+    </div>
+  </div>
+</div>
+
+<!-- SYNTHESE -->
+<div class="synthese">
+  <div class="syn-card">
+    <div class="syn-num">7</div>
+    <div class="syn-label">Composantes</div>
+    <div class="syn-text">du modèle de communication à maîtriser en négociation BtoB</div>
+  </div>
+  <div class="syn-card">
+    <div class="syn-num">6</div>
+    <div class="syn-label">Techniques</div>
+    <div class="syn-text">d'écoute active indispensables en phase de découverte des besoins</div>
+  </div>
+  <div class="syn-card">
+    <div class="syn-num">4</div>
+    <div class="syn-label">Profils clients</div>
+    <div class="syn-text">Analytique · Dirigeant · Expressif · Aimable — adapter chaque approche</div>
+  </div>
+  <div class="syn-card">
+    <div class="syn-num">55%</div>
+    <div class="syn-label">Non verbal</div>
+    <div class="syn-text">du message passe par le corps — la posture compte plus que les mots</div>
+  </div>
+  <div class="syn-card">
+    <div class="syn-num">6</div>
+    <div class="syn-label">Formes de négo.</div>
+    <div class="syn-text">directe, distance, équipe, multipartite, synchrone, asynchrone</div>
+  </div>
+  <div class="syn-card">
+    <div class="syn-num">8</div>
+    <div class="syn-label">Outils digitaux</div>
+    <div class="syn-text">CRM, visio, signature élec., configurateur — maîtrise phygitale indispensable</div>
+  </div>
+</div>
+
+</div><!-- /body -->
+
+<!-- POINTS CLÉS -->
+<div class="cles">
+  <div class="cles-title">// Points clés à retenir — C1.1 FR1</div>
+  <ul class="cles-list">
+    <li><strong>Modèle de communication :</strong> 7 composantes à maîtriser — émetteur, récepteur, message, canal, encodage/décodage, feedback, bruit.</li>
+    <li><strong>Règle de Mehrabian :</strong> 7% mots / 38% voix / 55% corps — soigner les 3 niveaux sans exception.</li>
+    <li><strong>Écoute active :</strong> 6 techniques — silencieuse, miroir, paraphrase, résumé, clarification, validation d'adhésion.</li>
+    <li><strong>Socio-styles :</strong> adapter son approche à chaque profil — analytique, dirigeant, expressif, aimable.</li>
+    <li><strong>6 formes de négociation :</strong> directe, distance, co-vente, multipartite, synchrone, asynchrone.</li>
+    <li><strong>Éthique professionnelle :</strong> obligation de conseil, transparence tarifaire, confidentialité, promesse commerciale.</li>
+  </ul>
+</div>
+
+<footer>
+  <span>BTS CCST – Bloc 1 · Compétence C1.1</span>
+  <span>FR1 — Communication interpersonnelle · Lycée Jean Perrin, Marseille</span>
+</footer>
+
+</body>
+</html>
